@@ -140,3 +140,22 @@
         .action button:nth-child(2):hover {
             background: #ffaeae;
         }
+        
+        
+        @media (max-width:1000px){
+        	.loginForm{
+        		width:50%;
+        	}
+        }
+        
+        @media (max-width:750px) {
+        	.loginForm{
+        		width:70%;
+        	}
+        }
+        
+        @media (max-width:500px){
+        	.loginForm{
+        		width:90%;
+        	}
+        }
