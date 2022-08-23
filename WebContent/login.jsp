@@ -39,7 +39,7 @@
 <%-- 	<%String pageRedirect = request.getParameter("pageLogin");%> --%>
 
 
-    <form id="loginForm" class="loginForm" method="post">
+    <form id="loginForm" class="loginForm" method="post" action="login">
         <h1 id="accedi">Accedi</h1>
         <div class="content">
             <div class="input-field">
