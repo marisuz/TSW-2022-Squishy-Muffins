@@ -35,7 +35,7 @@
 	<tr>
 	<td> <a href="Catalogo?action=view&id=<%= var.getCodprodotto()%>"> <img src="<%= var.getImmagine().getPath()%>"> </a> </td>
 	<td> <a href="Catalogo?action=view&id=<%= var.getCodprodotto()%>"> <%= var.getNome()%> </a>	<%= var.getPrezzo()%> &euro;</td>
-	<td> <a href="Modify?action=mod&id=<%= var.getCodprodotto()%>">    <input type="button" name="Modifica"> </a></td>
+	<td> <a href="Modify?action=mod&id=<%= var.getCodprodotto()%>">    <input type="button" value="Modifica"> </a></td>
 	</tr>
 	<%}%>
 	</table>
