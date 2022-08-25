@@ -25,10 +25,10 @@
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
-                        <h3>About Us</h3>
+                        <h3>Creators</h3>
                         <ul>
-                            <li><a href="#">Marisa La Sorda</a></li>
-                            <li><a href="#">Gerardo Napolitano</a></li>
+                            <li><a href="https://github.com/marisuz">Marisa La Sorda</a></li>
+                            <li><a href="https://github.com/GerrySpeaker">Gerardo Napolitano</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6 item text">

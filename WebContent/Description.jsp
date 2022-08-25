@@ -11,6 +11,7 @@
 <title>Pagina articolo dettagliata</title>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 
 <table>
 
@@ -33,6 +34,6 @@
 </table>
 
 
-
+<jsp:include page="footer.jsp" />
 </body>
 </html>

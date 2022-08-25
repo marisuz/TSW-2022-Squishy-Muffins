@@ -39,3 +39,6 @@ nb-configuration.xml
 .classpath
 .project
 .settings/
+
+#ConnectionPool
+src/Model/DriverManagerConnectionPool.java
