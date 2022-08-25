@@ -63,9 +63,16 @@ public class Cart extends HttpServlet {
 				else {
 					obj.addToCart(id, qnt);
 				}
-				request.getSession().setAttribute("carrello", obj); // Per evitare che il carrello non si aggiorni
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Catalog.jsp");
-				dispatcher.forward(request, response);
+				if(request.getParameter("provenienza").equals("carrello")) {
+					request.getSession().setAttribute("carrello", obj); // Per evitare che il carrello non si aggiorni
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Carrello.jsp");
+					dispatcher.forward(request, response);
+				}
+				else {
+					request.getSession().setAttribute("carrello", obj); // Per evitare che il carrello non si aggiorni
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Catalog.jsp");
+					dispatcher.forward(request, response);
+				}
 			}
 			
 			if(action.equalsIgnoreCase("view")) {
@@ -89,6 +96,54 @@ public class Cart extends HttpServlet {
 				request.setAttribute("carrello_view", ogg);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Carrello.jsp");
 				dispatcher.forward(request, response);
+			}
+			
+			if(action.equalsIgnoreCase("sub")) {
+				
+				Integer id, qnt, result;
+				id = Integer.parseInt(request.getParameter("id"));
+				qnt = Integer.parseInt(request.getParameter("qnt"));
+				
+				result = obj.getCart().get(id);
+				result--;
+				
+				obj.updateCart(id, result);
+				
+				if(request.getParameter("provenienza").equals("carrello")) {
+					
+					request.getSession().setAttribute("carrello", obj);
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Carrello.jsp");
+					dispatcher.forward(request, response);
+					
+				}
+			}
+			
+			if(action.equalsIgnoreCase("rmv")) {
+				
+				Integer id, qnt;
+				id = Integer.parseInt(request.getParameter("id"));
+				
+				qnt = 0;
+				obj.updateCart(id, qnt);
+				
+				if(request.getParameter("provenienza").equals("carrello")) {
+					
+					request.getSession().setAttribute("carrello", obj);
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Carrello.jsp");
+					dispatcher.forward(request, response);
+				}
+			}
+			
+			if(action.equalsIgnoreCase("rmvall")) {
+				
+				obj = new Carrello();
+				
+				if(request.getParameter("provenienza").equals("carrello")) {
+					
+					request.getSession().setAttribute("carrello", obj);
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Carrello.jsp");
+					dispatcher.forward(request, response);
+				}
 			}
 			
 		}

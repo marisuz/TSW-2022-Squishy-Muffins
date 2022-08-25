@@ -16,12 +16,12 @@
         </div>
 
         <div class="link">
-            <a href="#">Catalogo</a>
+            <a href="Catalog.jsp">Catalogo</a>
            <!-- <a href="#"></a>
             <a href="#"></a>  -->
             <a href="#">barra di ricerca</a>
             <a href="#">immagine utente</a>
-            <a href="#">carrello</a>
+            <a href="Carrello.jsp">carrello</a>
         </div>
 
         <div class="hamburger">
