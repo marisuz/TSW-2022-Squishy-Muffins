@@ -27,7 +27,7 @@
 <br>
 <input type="text" name="Descrizione" value="<%= var.getDescrizione()%>">
 <br>
-<img src="./immagini/<%= var.getImmagine()%>">
+<img src="<%= var.getImmagine()%>">
 <input type="file" name="Immagine" >
 <br>
 <input type="radio" name="Rimosso" value="1" <%if(var.getRimosso() == 1) out.println("checked"); %>> Yes
