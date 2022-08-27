@@ -208,8 +208,8 @@ public class ProdottoDAO
 		PreparedStatement preparedStatement = null;
 
 		String upsql = "UPDATE " + ProdottoDAO.TABLE_NAME + 
-						" SET nome = ?, prezzo = ?, descrizione = ?, cod_immagine = ?, rimosso = ?, quantita = ?, codi_categoria = ?,  " + 
-						"WHERE cod_prodotto = ?";
+						" SET nome = ?, prezzo = ?, descrizione = ?, cod_immagine = ?, rimosso = ?, quantita = ?, codi_categoria = ?  " + 
+						"WHERE (cod_prodotto = ?) ";
 		try 
 		{
 			connection = DriverManagerConnectionPool.getConnection();
@@ -220,6 +220,9 @@ public class ProdottoDAO
 			preparedStatement.setString(3, var.getDescrizione());
 			preparedStatement.setString(4, var.getImmagine().getNome_immagine());
 			preparedStatement.setInt(5, var.getRimosso());
+			preparedStatement.setInt(6, var.getQuantita());
+			preparedStatement.setInt(7, var.getCategoria().getCodcategoria());
+			preparedStatement.setInt(8, var.getCodprodotto());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();

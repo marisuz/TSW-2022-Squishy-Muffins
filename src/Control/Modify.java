@@ -27,7 +27,7 @@ import Model.ProdottoDAO;
 @MultipartConfig
 public class Modify extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String SAVE_DIR = "Immagini/";
+	private static final String SAVE_DIR = "images";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -74,6 +74,7 @@ public class Modify extends HttpServlet {
 				if(!GetFileName(var).equalsIgnoreCase("")) {
 					
 					ImmagineDAO IMDAO = new ImmagineDAO();
+					System.out.println(GetFileName(var));
 					try {
 						obj.setImmagine(IMDAO.doRetrieveByKey(GetFileName(var)));
 					} catch (SQLException e) {
@@ -113,8 +114,10 @@ public class Modify extends HttpServlet {
         for (String content : part.getHeader("content-disposition").split(";")) 
         {
             if (content.trim().startsWith("filename")) {
-                return content.substring(
+            	content = content.substring(
                         content.indexOf('=') + 1).trim().replace("\"", "");
+            	
+            	return content.substring(0, content.length() - 4);
             }
         }
         return null;

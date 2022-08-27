@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Model.OrdineDAO;
+
 /**
  * Servlet implementation class Ordine
  */
@@ -26,7 +28,12 @@ public class Ordine extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		OrdineDAO odao = new OrdineDAO();
+		
+		
+		
+		
 	}
 
 	/**

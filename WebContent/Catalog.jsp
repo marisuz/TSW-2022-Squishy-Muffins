@@ -62,9 +62,9 @@
 			<a href="Catalogo?action=view&id=<%=var.getCodprodotto()%>">
 						<%=var.getNome()%>
 				</a> <%=var.getPrezzo()%> &euro;
-			<a href="Cart?action=add&id=<%=var.getCodprodotto()%>&qnt=1&provenienza=catalogo"> </a>
+			<a href="Cart?action=add&id=<%=var.getCodprodotto()%>&qnt=1&provenienza=catalogo"> <input type="button" value="Aggiungi"> </a>
 					
-			<input type="button" value="Aggiungi">
+			
 		</div>
 					
 		

@@ -107,7 +107,7 @@ public class Catalogo extends HttpServlet {
 	
 	private void LoadImage() throws IOException
     {
-        String savePath = getServletContext().getRealPath("") + File.separator + "Immagini/";
+        String savePath = getServletContext().getRealPath("") + File.separator + "images/";
 
         File folder = new File("C:/Immagini");
         File[] listOfFiles = folder.listFiles();
