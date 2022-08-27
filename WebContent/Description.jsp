@@ -15,7 +15,7 @@ request.setAttribute("description", null);
 	<body>
 		<jsp:include page="header.jsp" />
 	
-		<%-- <table>
+		<table>
 	
 		<tr>
 			<td rowspan="2">
@@ -33,7 +33,7 @@ request.setAttribute("description", null);
 	
 			</td>
 		</tr>
-	</table> --%>
+	</table> 
 	
 	
 		<jsp:include page="footer.jsp" />

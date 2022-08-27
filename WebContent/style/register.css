@@ -1,7 +1,7 @@
 #accedi {
-            padding: 35px 35px 0 35px;
-            font-weight: 300;
-            text-align:center;
+	padding: 35px 35px 0 35px;
+    font-weight: 300;
+    text-align:center;
 }
 
 .loginForm {
@@ -127,20 +127,20 @@
     background: #3c4d6d;
 }
 
-  @media (max-width:1000px){
+@media (max-width:1000px){
         	.loginForm{
         		width:50%;
         	}
-        }
+}
         
-        @media (max-width:750px) {
+@media (max-width:750px) {
         	.loginForm{
         		width:70%;
         	}
-        }
+}
         
-        @media (max-width:500px){
+@media (max-width:500px){
         	.loginForm{
         		width:90%;
         	}
-        }
+}
