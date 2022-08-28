@@ -61,7 +61,7 @@
 				</a>	
 			<a href="Catalogo?action=view&id=<%=var.getCodprodotto()%>">
 						<%=var.getNome()%>
-				</a> <%=var.getPrezzo()%> &euro;
+				</a> <%= String.format("%.02f", var.getPrezzo()) %> &euro;
 			<a href="Cart?action=add&id=<%=var.getCodprodotto()%>&qnt=1&provenienza=catalogo"> <input type="button" value="Aggiungi"> </a>
 					
 			

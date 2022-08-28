@@ -25,7 +25,7 @@
 	%>
 	<tr>
 	<td> <a href="Catalogo?action=view&id=<%= var.getCodprodotto()%>"> <img src="<%= var.getImmagine().getPath()%>"> </a> </td>
-	<td> <a href="Catalogo?action=view&id=<%= var.getCodprodotto()%>"> <%= var.getNome()%> </a>	<%= var.getPrezzo()%> &euro;</td>
+	<td> <a href="Catalogo?action=view&id=<%= var.getCodprodotto()%>"> <%= var.getNome()%> </a>	<%= String.format("%.02f", var.getPrezzo()) %> &euro;</td>
 	<td> Quantità : <%= entry.getValue() %>  <a href="Cart?action=add&id=<%= var.getCodprodotto()%>&qnt=1&provenienza=carrello"><input type ="button" value = "+"></a>&nbsp;	<a href="Cart?action=sub&id=<%= var.getCodprodotto()%>&qnt=1&provenienza=carrello"><input type ="button" value = "-"> </a>
 			&nbsp;	<a href="Cart?action=rmv&id=<%= var.getCodprodotto()%>&qnt=1&provenienza=carrello"><input type ="button" value = "Rimuovi"></a>
 	</td>

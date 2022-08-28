@@ -37,7 +37,7 @@ public class ProdottoDAO
 			
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, user.getNome());
-			preparedStatement.setInt(2, user.getPrezzo());
+			preparedStatement.setFloat(2, user.getPrezzo());
 			preparedStatement.setString(3, user.getDescrizione());
 			preparedStatement.setInt(4, user.getQuantita());
 			preparedStatement.setInt(5, user.getCategoria().getCodcategoria());
@@ -82,7 +82,7 @@ public class ProdottoDAO
 			{
 				bean.setCodprodotto(rs.getInt("cod_prodotto"));
 				bean.setNome(rs.getString("nome"));
-				bean.setPrezzo(rs.getInt("prezzo"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setRimosso(rs.getInt("rimosso"));
 				bean.setQuantita(rs.getInt("quantita"));
@@ -171,7 +171,7 @@ public class ProdottoDAO
 
 				bean.setCodprodotto(rs.getInt("cod_prodotto"));
 				bean.setNome(rs.getString("nome"));
-				bean.setPrezzo(rs.getInt("prezzo"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				
 				ImmagineDAO pdao = new ImmagineDAO();
@@ -216,7 +216,7 @@ public class ProdottoDAO
 			preparedStatement = connection.prepareStatement(upsql);
 			
 			preparedStatement.setString(1, var.getNome());
-			preparedStatement.setInt(2, var.getPrezzo());
+			preparedStatement.setFloat(2, var.getPrezzo());
 			preparedStatement.setString(3, var.getDescrizione());
 			preparedStatement.setString(4, var.getImmagine().getNome_immagine());
 			preparedStatement.setInt(5, var.getRimosso());
