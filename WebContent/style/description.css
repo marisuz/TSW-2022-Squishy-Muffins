@@ -1,7 +1,45 @@
+.padre{
+	padding: 0px 60px 60px 60px;
+}
+
 .sped{
-	margin:40px;
+ 	margin-top:40px; 
 	display:flex;
 	font-size: 1.3rem;
+    justify-content: space-between;
+    padding:1%;
+    border: 1px solid black;
+    border-radius:18px;
+    border-color: lightblue;
+    background-color: aliceblue;
+}
+
+.sped p{
+	margin-bottom:0;
+}
+
+#nascosto{
+	text-align: center;
+	padding: 2%;
+	display: none;
+	border: 1px solid black;
+	border-radius:18px;
+    border-color: lightblue;
+    background-color: aliceblue;
+}
+
+/* p{
+	margin: 0%;
+} */
+
+#frecciaGiu{
+	display:block;
+	cursor: pointer;
+}
+
+#frecciaSu{
+	display: none;
+	cursor: pointer;
 }
 
 .container {
@@ -91,7 +129,6 @@ a:not(.cons) {
 
 .product-title-nascosto {
 	display: none;
-	font-family: "archia-regular";
 	font-size: 3rem;
 }
 
