@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1" import="java.util.*, Model.*"%>
     
 <%	if(request.getSession().getAttribute("secure") == null || request.getSession().getAttribute("secure").equals("Utente")){
-	response.sendRedirect("./Login.jsp");
+	response.sendRedirect("./login.jsp");
 	return;
 }
 	ProdottoBean var = (ProdottoBean)request.getAttribute("modify");

@@ -44,7 +44,7 @@ public class ProdottoDAO
 	
 			preparedStatement.executeUpdate();
 
-				connection.commit(); //Salva le modifiche sul database
+				//connection.commit(); //Salva le modifiche sul database
 		} 
 		finally 
 		{
@@ -225,7 +225,7 @@ public class ProdottoDAO
 			preparedStatement.setInt(8, var.getCodprodotto());
 			
 			preparedStatement.executeUpdate();
-			connection.commit();
+			//connection.commit();
 
 		} 
 		finally 

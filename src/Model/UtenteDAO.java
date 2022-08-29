@@ -32,7 +32,7 @@ public class UtenteDAO
 	
 			preparedStatement.executeUpdate();
 
-				connection.commit(); //Salva le modifiche sul database
+				//connection.commit(); //Salva le modifiche sul database
 		} 
 		finally 
 		{
@@ -48,6 +48,46 @@ public class UtenteDAO
 		}
 		
 	}
+	
+public synchronized void doUpdate (UtenteBean var, String vecchia_mail) throws SQLException {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		String upsql = "UPDATE " + UtenteDAO.TABLE_NAME + 
+						" SET email = ?, password = ?, nome = ?, cognome = ?, codice_fiscale = ? " + 
+						"WHERE (email = ?) ";
+		try 
+		{
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(upsql);
+			
+			preparedStatement.setString(1, var.getEmail());
+			preparedStatement.setString(2, var.getPassword());
+			preparedStatement.setString(3, var.getNome());
+			preparedStatement.setString(4, var.getCognome());
+			preparedStatement.setString(5, var.getCodice_fiscale());
+			preparedStatement.setString(6, vecchia_mail);		// per sapere quale mail cambiare tenendo come riferimento quella vecchia durante la modifica
+			
+			preparedStatement.executeUpdate();
+			
+
+		} 
+		finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+	}
+	
 	
 	public synchronized UtenteBean doRetrieveByKey(String Email) throws SQLException 
 	{

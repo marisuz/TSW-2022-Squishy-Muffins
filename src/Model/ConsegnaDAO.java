@@ -41,7 +41,7 @@ public class ConsegnaDAO {
 	
 			preparedStatement.executeUpdate();
 
-				connection.commit(); //Salva le modifiche sul database
+				//connection.commit(); //Salva le modifiche sul database
 		} 
 		finally 
 		{
@@ -64,7 +64,7 @@ public class ConsegnaDAO {
 
 		ConsegnaBean bean = new ConsegnaBean();
 
-		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE cod_prodotto = ?";
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE id_consegna = ?";
 
 		try 
 		{

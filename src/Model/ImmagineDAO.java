@@ -29,7 +29,7 @@ public class ImmagineDAO {
 	
 			preparedStatement.executeUpdate();
 
-				connection.commit(); //Salva le modifiche sul database
+				//connection.commit(); //Salva le modifiche sul database
 		} 
 		finally 
 		{

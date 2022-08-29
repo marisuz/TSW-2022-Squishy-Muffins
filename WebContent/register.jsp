@@ -27,7 +27,7 @@
 	
     <jsp:include page="header.jsp"/>
 
-    <form action="./RegisterServlet" method="post" class="loginForm" id="registerForm">
+    <form action="Registration" method="post" class="loginForm" id="registerForm">
     	<div id="form1">
         	<h1 id="accedi">Registrati</h1>
         	<div class="content">
@@ -70,7 +70,7 @@
             	</div>
             	
             	<div class="input-field">
-                	<input type="text" placeholder="Username" id="username" name="username" required>
+                	<input type="text" placeholder="Codice Fiscale" id="codicefiscale" name="codicefiscale" required>
                 	<p class="error_message"></p>
             	</div>
             	<div class="">
@@ -116,8 +116,8 @@
 	 	        	var fields_to_check = ["emailInput", "pass1", "pass2"]; //id dei campi del form da verificare
 		 	        var fields_human_names = ["Email", "Password", "RipetiPassword"]; //nomi leggibili per il messaggio di errore
 	 	        }else if(x == 2){
-	 	        	var fields_to_check = ["nome", "cognome", "username"]; //id dei campi del form da verificare
-		 	        var fields_human_names = ["Nome", "Cognome", "Username"]; //nomi leggibili per il messaggio di errore
+	 	        	var fields_to_check = ["nome", "cognome", "codicefiscale"]; //id dei campi del form da verificare
+		 	        var fields_human_names = ["Nome", "Cognome", "Codice Fiscale"]; //nomi leggibili per il messaggio di errore
 	 	        }
 	 	        
 
@@ -145,10 +145,10 @@
 	 	            }else if(strcmp(document.forms["registerForm"][fields_to_check[i]].id, "pass1" ) == 0 && check_field.length < 8){
 	 	            	error_message += "<br/>La password deve contenere almeno 8 caratteri";
 	 	            	errors_exist += 1;
-	 	            }else if(strcmp(document.forms["registerForm"][fields_to_check[i]].id, "username" ) == 0 && check_field.length < 5){
+	 	            } /*else if(strcmp(document.forms["registerForm"][fields_to_check[i]].id, "username" ) == 0 && check_field.length < 5){
 	 	            	error_message += "<br/>L'username deve contenere almeno 5 caratteri";
 	 	            	errors_exist += 1;
-	 	            }
+	 	            }*/
 
 	 	        }
 	 	       //console.log(strcmp(document.forms["registerForm"][fields_to_check[2]].value, document.forms["registerForm"][fields_to_check[1]].value)); flag

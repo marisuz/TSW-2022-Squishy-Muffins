@@ -19,9 +19,9 @@
 	            <a href="Catalog.jsp">Catalogo</a>
 	           <!-- <a href="#"></a>
 	            <a href="#"></a>  -->
-	            <a href="#">barra di ricerca</a>
-	            <a href="#">immagine utente</a>
-	            <a href="Carrello.jsp">carrello</a>
+	            <a href="#">Barra di ricerca</a>
+	            <a href="Profilo_utente.jsp">Immagine utente</a>
+	            <a href="Carrello.jsp">Carrello</a>
 	        </div>
 	
 	        <div class="hamburger">
