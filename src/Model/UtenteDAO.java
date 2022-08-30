@@ -95,6 +95,8 @@ public synchronized void doUpdate (UtenteBean var, String vecchia_mail) throws S
 		PreparedStatement preparedStatement = null;
 
 		UtenteBean bean = new UtenteBean();
+		PagamentoDAO pdao = new PagamentoDAO();
+		ConsegnaDAO cdao = new ConsegnaDAO();
 
 		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE email = ?";
 
@@ -108,6 +110,8 @@ public synchronized void doUpdate (UtenteBean var, String vecchia_mail) throws S
 
 			while (rs.next()) 
 			{
+				bean.setPagamento(pdao.doRetrieveByUtente(rs.getString("email")));
+				bean.setConsegna(cdao.doRetrieveByUtente(rs.getString("email")));
 				bean.setEmail(rs.getString("email"));
 				bean.setPassword(rs.getString("password"));
 				bean.setNome(rs.getString("nome"));
@@ -172,6 +176,8 @@ public synchronized void doUpdate (UtenteBean var, String vecchia_mail) throws S
 		PreparedStatement preparedStatement = null;
 
 		Collection<UtenteBean> users = new LinkedList<UtenteBean>();
+		PagamentoDAO pdao = new PagamentoDAO();
+		ConsegnaDAO cdao = new ConsegnaDAO();
 
 		String selectSQL = "SELECT * FROM " + UtenteDAO.TABLE_NAME;
 
@@ -190,6 +196,9 @@ public synchronized void doUpdate (UtenteBean var, String vecchia_mail) throws S
 			while (rs.next()) 
 			{
 				UtenteBean bean = new UtenteBean();
+				
+				bean.setPagamento(pdao.doRetrieveByUtente(rs.getString("email")));
+				bean.setConsegna(cdao.doRetrieveByUtente(rs.getString("email")));
 
 				bean.setEmail(rs.getString("email"));
 				bean.setPassword(rs.getString("password"));

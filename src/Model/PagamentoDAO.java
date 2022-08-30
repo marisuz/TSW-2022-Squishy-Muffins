@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class PagamentoDAO {
 	
@@ -134,6 +135,54 @@ public class PagamentoDAO {
 			}
 		}
 		return (result != 0);
+	}
+	
+	public synchronized ArrayList<PagamentoBean> doRetrieveByUtente(String user) throws SQLException{
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<PagamentoBean> arr = new ArrayList<PagamentoBean>();
+
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE e_utente = ?";
+
+		try 
+		{
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, user);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) 
+			{
+				PagamentoBean bean = new PagamentoBean();
+				
+				bean.setIdpagamento(rs.getInt("id_pagamento"));
+				bean.setNominativo(rs.getString("nominativo"));
+				bean.setCVV(rs.getInt("CVV"));
+				bean.setMeseScadenza(rs.getInt("meseScadenza"));
+				bean.setCodice_carta(rs.getString("codice_carta"));
+				bean.setAnnoScadenza(rs.getInt("annoScadenza"));
+				
+				arr.add(bean);
+			}
+
+		} 
+		finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return arr;
+		
 	}
 	
 	

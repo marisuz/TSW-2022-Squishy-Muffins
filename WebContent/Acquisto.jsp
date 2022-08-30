@@ -38,6 +38,16 @@
 	
 	<p>Totale: <%= String.format("%.02f",Prezzo_finale) %> &euro; </p> 
 	
+	
+	<% 
+		PagamentoBean pgm = new PagamentoBean();
+		
+		
+		
+		
+	%>
+	
+	
 	<%}%>
 	<jsp:include page="footer.jsp"/>
 </body>
