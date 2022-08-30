@@ -52,11 +52,13 @@ public class Login extends HttpServlet {
 				//response.getWriter().append("nome: " + utente.getNome() + "\ncognome: " + utente.getCognome());
 				
 				if(utente.isAdmin()) {
-					request.getSession().setAttribute("secure", "Admin");		//Per motivi di sicurezza 
+					request.getSession().setAttribute("secure", "Admin");
+					request.getSession().setAttribute("Utente loggato" , utente );       //Per motivi di sicurezza 
 					response.sendRedirect("./CatalogAdmin.jsp");
 				}
 				else {
-					request.getSession().setAttribute("secure", "Utente");		//Per motivi di sicurezza
+					request.getSession().setAttribute("secure", "Utente");
+					request.getSession().setAttribute("Utente loggato" , utente );       //Per motivi di sicurezza
 					response.sendRedirect("./Catalog.jsp");
 				}
 				

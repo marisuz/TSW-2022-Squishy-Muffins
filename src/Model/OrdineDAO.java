@@ -45,7 +45,7 @@ public class OrdineDAO {
 	
 			preparedStatement.executeUpdate();
 
-				connection.commit(); //Salva le modifiche sul database
+				//connection.commit(); //Salva le modifiche sul database
 		} 
 		finally 
 		{
@@ -167,7 +167,7 @@ public class OrdineDAO {
 			preparedStatement.setString(5, var.getCodUtente().getEmail());
 			
 			preparedStatement.executeUpdate();
-			connection.commit();
+			//connection.commit();
 
 		} 
 		finally 
