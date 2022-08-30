@@ -16,6 +16,18 @@
 	border-bottom:1px solid black;
 	font-weight:bold;
 	font-size:1.5em;
+	display:flex;
+}
+
+.immag{
+	width:100%;
+}
+.pulsanti {
+    width: 25px;
+    height: 25px;
+    background: none;
+    border-radius: 10px;
+    border: 1px solid #ffc1c1;
 }
 
 .prodottoCarrello {
@@ -35,6 +47,8 @@
   text-align: center;
   font-size: 1em;
   width: 20%;
+  display: flex;
+  gap: 10%;
 } 
 
 .prodottoCarrello:hover {
@@ -64,6 +78,7 @@
 	width: 100%;
 	padding: 10px;
     margin: 2px;
+    justify-content:space-around;
 }
 
 .svuotaCarrello:hover {
@@ -84,6 +99,10 @@
 @media (max-width:1000px){
 	.prodTitolo, .prodPrezzo, .prodLabel {
 		font-size:1em;
+	}
+	
+	.rimuoviProdottoCarrello{
+		padding-top:15px;	
 	}	
 }
 
@@ -91,11 +110,19 @@
 	.prodTitolo, .prodPrezzo, .prodLabel {
 		font-size:0.9em;
 	}
+	
+	.rimuoviProdottoCarrello{
+		padding-top:15px;	
+	}
 }
 
 @media (max-width:600px){
 		.prodTitolo, .prodPrezzo, .prodLabel {
 		font-size:0.8em;
+	}
+	
+	.rimuoviProdottoCarrello{
+		padding-top:15px;	
 	}
 }
 
@@ -108,6 +135,10 @@
 	
 	.listProdCarrello{
 		width:85%;
+	}
+	
+	.rimuoviProdottoCarrello{
+		padding-top:15px;	
 	}
 }
 

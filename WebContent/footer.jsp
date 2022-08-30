@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 
@@ -45,7 +45,7 @@
 	                    <a href="#"><i class="icon ion-social-instagram"></i></a>
 	                    </div>
 	                </div>
-	                <p class="copyright">Squishy Muffins © 2022</p>
+	                <p class="copyright">Squishy Muffins Â© 2022</p>
 	            </div>
 	        </footer>
 	    </div>

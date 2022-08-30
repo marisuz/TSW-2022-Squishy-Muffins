@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.*, Model.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*, Model.*"%>
     
 <%
 	Map<ProdottoBean, Integer> obj = (Map<ProdottoBean, Integer>)request.getAttribute("carrello_view"); 
@@ -33,6 +33,13 @@
 				<div class = "listProdCarrello">
 					<div class="titoloCarrello">
 						<p style="width:20%; margin-right:auto">Carrello</p>
+						
+												<form action="Cart" method="POST"> 												
+							<input type="hidden" name="action" value="rmvall">
+							<input type="hidden" name="qnt" value="1"> 
+							<input type="hidden" name="provenienza" value="carrello">															
+							<button class="svuotaCarrello">Svuota carrello</button>																
+						</form>
 					</div>	
 		
 				
@@ -44,7 +51,7 @@
 				
 					<div class="prodottoCarrello">
 						<div>
-							<a href="Catalogo?action=view&id=<%= var.getCodprodotto()%>"> <img src="<%= var.getImmagine().getPath()%>"> </a>
+							<a href="Catalogo?action=view&id=<%= var.getCodprodotto()%>"> <img src="<%= var.getImmagine().getPath()%>" class="immag"> </a>
 						</div>
 						<div>
 							<a href="Catalogo?action=view&id=<%=var.getCodprodotto()%>" class="prodTitolo" style="text-decoration:none; color:black"> <%= var.getNome()%> </a>	
@@ -55,19 +62,20 @@
 						<div>	
 							<label class="prodLabel" for="quantità">Quantità: <%= entry.getValue() %> </label>
 							<form action="Cart" method="post">
-								<input type="hidden" name="action" value="add">
-								<input type="hidden" name="id" value="<%=var.getCodprodotto()%>">
-								<input type="hidden" name="qnt" value="1">
-								<input type="hidden" name="provenienza" value="carrello">
-								<input type="submit" value="+"> &nbsp;
-							</form>
-							<form action="Cart" method="post">
 								<input type="hidden" name="action" value="sub">
 								<input type="hidden" name="id" value="<%=var.getCodprodotto()%>">
 								<input type="hidden" name="qnt" value="1">
 								<input type="hidden" name="provenienza" value="carrello">
-								<input type="submit" value="-"> &nbsp;	
-							</form> 
+								<input type="submit" value="-" class="pulsanti"> &nbsp;	
+							</form>
+							<form action="Cart" method="post">
+								<input type="hidden" name="action" value="add">
+								<input type="hidden" name="id" value="<%=var.getCodprodotto()%>">
+								<input type="hidden" name="qnt" value="1">
+								<input type="hidden" name="provenienza" value="carrello">
+								<input type="submit" value="+" class="pulsanti"> &nbsp;
+							</form>
+							 
 						</div> 		
 						<form id="rimuoviProd" action="Cart" method="POST">
 							<input type="hidden" name="action" value="rmv">
@@ -81,17 +89,11 @@
 								</svg></button>
 							</div>
 						</form>
-						
-						<%}%>
-						
-						<form action="Cart" method="POST"> 												
-							<input type="hidden" name="action" value="rmvall">
-							<input type="hidden" name="qnt" value="1"> 
-							<input type="hidden" name="provenienza" value="carrello">															
-							<button class="svuotaCarrello">Svuota carrello</button>																
-						</form>
+
 					</div>
+					<%}%>
 					
+
 					
 					<%}
 					else {%>
