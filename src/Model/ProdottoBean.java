@@ -4,7 +4,7 @@ public class ProdottoBean {
 	
 	int codprodotto;
 	String Nome;
-	int Prezzo;
+	float Prezzo;
 	String Descrizione;
 	ImmagineBean Immagine;
 	int Rimosso;
@@ -36,10 +36,10 @@ public class ProdottoBean {
 	public void setNome(String nome) {
 		Nome = nome;
 	}
-	public int getPrezzo() {
+	public float getPrezzo() {
 		return Prezzo;
 	}
-	public void setPrezzo(int prezzo) {
+	public void setPrezzo(float prezzo) {
 		Prezzo = prezzo;
 	}
 	public String getDescrizione() {
