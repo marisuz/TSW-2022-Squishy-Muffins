@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ConsegnaDAO {
 	
@@ -130,6 +131,52 @@ public class ConsegnaDAO {
 			}
 		}
 		return (result != 0);
+	}
+	
+	public synchronized ArrayList<ConsegnaBean> doRetrieveByUtente(String user) throws SQLException{
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<ConsegnaBean> arr = new ArrayList<ConsegnaBean>();
+
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE utente = ?";
+
+		try 
+		{
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, user);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) 
+			{
+				ConsegnaBean bean = new ConsegnaBean();
+				bean.setIdconsegna(rs.getInt("id_consegna"));
+				bean.setVia(rs.getString("via"));
+				bean.setNumero(rs.getInt("numero"));
+				bean.setCap(rs.getInt("cap"));
+				bean.setCitta(rs.getString("citta"));
+				
+				arr.add(bean);
+			}
+
+		} 
+		finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return arr;
+		
 	}
 	
 	

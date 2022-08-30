@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class UtenteBean {
 	
 	String Email;
@@ -8,7 +10,22 @@ public class UtenteBean {
 	String Cognome;
 	String Codice_fiscale;
 	Boolean admin;
+	ArrayList<ConsegnaBean> Consegna = new ArrayList<>();
+	ArrayList<PagamentoBean> Pagamento = new ArrayList<>();
 	
+	public ArrayList<PagamentoBean> getPagamento() {
+		return Pagamento;
+	}
+	public void setPagamento(ArrayList<PagamentoBean> pagamento) {
+		Pagamento = pagamento;
+	}
+	public ArrayList<ConsegnaBean> getConsegna() {
+		return Consegna;
+	}
+	public void setConsegna(ArrayList<ConsegnaBean> consegna) {
+		Consegna = consegna;
+	}
+
 	public Boolean isAdmin() {
 		return admin;
 	}

@@ -6,7 +6,8 @@
 	if(obj == null){
 		response.sendRedirect("./Cart?action=view");
 	}
-	request.setAttribute("carrello_view", null);
+	//request.setAttribute("carrello_view", null);
+	request.getSession().setAttribute("carrello_view", obj);
 %>
 
 <!DOCTYPE html>
@@ -89,7 +90,7 @@
 								</svg></button>
 							</div>
 						</form>
-
+									<a href="Acquisto.jsp"> <input type="button" value="Procedi"> </a>
 					</div>
 					<%}%>
 					
