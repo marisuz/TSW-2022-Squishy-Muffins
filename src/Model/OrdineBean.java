@@ -11,13 +11,13 @@ public class OrdineBean {
 	int idOrdine;
 	Date data_ordine;
 	String stato_ordine;
-	HashMap<Integer, Integer> composizione = new HashMap<>();
+	HashMap<ProdottoBean, Integer> composizione = new HashMap<>();
 	
 	
-	public HashMap<Integer, Integer> getComposizione() {
+	public HashMap<ProdottoBean, Integer> getComposizione() {
 		return composizione;
 	}
-	public void setComposizione(HashMap<Integer, Integer> composizione) {
+	public void setComposizione(HashMap<ProdottoBean, Integer> composizione) {
 		this.composizione = composizione;
 	}
 	

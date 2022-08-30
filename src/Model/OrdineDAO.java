@@ -11,7 +11,7 @@ public class OrdineDAO {
 	
 	private static final String TABLE_NAME = "ordine";
 	
-	public synchronized  void doSave(OrdineBean user) throws SQLException
+	public synchronized int doSave(OrdineBean user) throws SQLException
 	{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -34,9 +34,8 @@ public class OrdineDAO {
 			id.next();
 			int CID = id.getInt("id_ordine") + 1;
 			
-			
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, user.getIdOrdine());
+			preparedStatement.setInt(1, CID);
 			preparedStatement.setDate(2, user.getData_ordine());
 			preparedStatement.setString(3, user.getStato_ordine());
 			preparedStatement.setInt(4, user.getCodConsegna().getIdconsegna());
@@ -44,7 +43,7 @@ public class OrdineDAO {
 			preparedStatement.setString(6, user.getCodUtente().getEmail());
 	
 			preparedStatement.executeUpdate();
-
+			return CID;
 				//connection.commit(); //Salva le modifiche sul database
 		} 
 		finally 
