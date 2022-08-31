@@ -38,16 +38,35 @@
 	
 	<p>Totale: <%= String.format("%.02f",Prezzo_finale) %> &euro; </p> 
 	
-	
+	<form action="Salvataggio_ordine" method="post">
 	<% 
-		PagamentoBean pgm = new PagamentoBean();
+		UtenteBean u = (UtenteBean)request.getSession().getAttribute("Utente loggato");
+		for(PagamentoBean pbean : u.getPagamento()){
+	%>	
+		<input type="radio" name="Pagamento" value="<%= pbean.getIdpagamento()%>">
+		<p> <%=  pbean.getNominativo() %></p>
+		<p> <%=  pbean.getCVV() %></p>
+		<p> <%=  pbean.getMeseScadenza() %></p>
+		<p> <%=  pbean.getAnnoScadenza() %></p>
+		<p> <%=  pbean.getCodice_carta() %></p>
 		
+	<%}%>
+	
+		<% 
+		UtenteBean ut = (UtenteBean)request.getSession().getAttribute("Utente loggato");
+		for(ConsegnaBean cbean : ut.getConsegna()){
+	%>	
+		<input type="radio" name="Indirizzo" value="<%= cbean.getIdconsegna()%>">
+		<p> <%=  cbean.getVia() %></p>
+		<p> <%=  cbean.getNumero() %></p>
+		<p> <%=  cbean.getCap() %></p>
+		<p> <%=  cbean.getCitta() %></p>
 		
-		
-		
-	%>
+	<%}%>
 	
 	
+		<input type="submit" value="Completa ordine">
+	</form>
 	<%}%>
 	<jsp:include page="footer.jsp"/>
 </body>

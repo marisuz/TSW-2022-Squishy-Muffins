@@ -77,7 +77,7 @@ public class Cart extends HttpServlet {
 			
 			if(action.equalsIgnoreCase("view")) {
 				
-				Map<ProdottoBean, Integer> ogg = new HashMap<>();
+				HashMap<ProdottoBean, Integer> ogg = new HashMap<>();
 				ProdottoDAO pdao = new ProdottoDAO();
 				
 				for(Entry<Integer, Integer> entry : obj.getCart().entrySet()) {
