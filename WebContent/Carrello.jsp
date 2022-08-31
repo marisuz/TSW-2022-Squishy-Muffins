@@ -35,7 +35,7 @@
 					<div class="titoloCarrello">
 						<p style="width:20%; margin-right:auto">Carrello</p>
 						
-												<form action="Cart" method="POST"> 												
+						<form action="Cart" method="POST"> 												
 							<input type="hidden" name="action" value="rmvall">
 							<input type="hidden" name="qnt" value="1"> 
 							<input type="hidden" name="provenienza" value="carrello">															

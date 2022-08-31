@@ -1,7 +1,8 @@
 .datiPersonali{
 	justify-content:center;
 	display:grid;
-	/* max-width:50%; */
+	padding:10px;
+	text-align:center;
 }
 
 .Modifica{
@@ -13,7 +14,7 @@
 	background-color: #ffc1c1;
 	font-weight: normal;
 	text-align:center;
-	width: 100%;
+	width: 60%;
 	padding: 10px;
     margin: 2px;
     justify-content:space-around;
@@ -33,32 +34,8 @@ a:hover{
 	border: lightblue;
 }
 
-.save{
-	text-decoration: none;
-	border: 1px solid #ffc1c1;
-	border-radius: 2em;
-	font-size: 1em;
-	color: black;
-	background-color: #ffc1c1;
-	font-weight: normal;
-	text-align:center;
-	width: 50%;
-	padding: 10px;
-    margin: 10px;
-    justify-content:space-around;
-}
-
-.save:hover{
-	color:black;
-	font-color:white;
-	background-color:lightblue;
-	transition:0.3s;
-	cursor: pointer;
-	border: lightblue;
-}
-
 .campi{
-	border-radius:20px;
+	border-radius:10px;
 	border: 1px solid grey;
 	text-align:center;
 	margin:2px;
@@ -78,7 +55,9 @@ div#prova {
 
 .areaNick{
 	margin-left:5px;
+	width:100%;
 }
+
 .areaUtente {
   margin: 1% 15%;
   padding:2%;
@@ -94,37 +73,18 @@ div#prova {
 	width:50%;
 }
 
-.nicknameArea, .passwordArea{
+.nicknameArea{
 	display:flex;
-	width:80%;
-	margin:0 10%;
-}
-
-.metodi{
-	display:flex;
+	width:100%;
 	justify-content:center;
-}
 
-.met{
-	display:flex;
-	align-items: center;
-	padding:20px;
-	max-width:100%;
 }
-
-@media(max-width:1000px){
-	.metodi{
-	flex-direction:column;
-	}
-}
-
 
 @media (max-width: 800px){
 	.areaUtente {
   		margin: 1% 1%;
   		padding:2%;
 	}
-	
-	.metodi{
-		flex-direction:column;
-	}
+
+
+
