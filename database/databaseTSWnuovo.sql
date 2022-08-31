@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `squishy_muffins` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `squishy_muffins`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
 -- Host: localhost    Database: squishy_muffins
@@ -49,6 +51,7 @@ DROP TABLE IF EXISTS `composizione`;
 CREATE TABLE `composizione` (
   `codi_prodotto` int NOT NULL,
   `num_ordine` int NOT NULL,
+  `quantita` int NOT NULL,
   KEY `codi_prodotto_idx` (`codi_prodotto`),
   KEY `num_ordine_idx` (`num_ordine`),
   CONSTRAINT `codi_prodotto` FOREIGN KEY (`codi_prodotto`) REFERENCES `prodotto` (`cod_prodotto`),
@@ -62,6 +65,7 @@ CREATE TABLE `composizione` (
 
 LOCK TABLES `composizione` WRITE;
 /*!40000 ALTER TABLE `composizione` DISABLE KEYS */;
+INSERT INTO `composizione` VALUES (3,2,2),(4,3,1),(3,3,2),(5,3,3);
 /*!40000 ALTER TABLE `composizione` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +150,7 @@ CREATE TABLE `metodo_pagamento` (
 
 LOCK TABLES `metodo_pagamento` WRITE;
 /*!40000 ALTER TABLE `metodo_pagamento` DISABLE KEYS */;
-INSERT INTO `metodo_pagamento` VALUES (1,'Mary',677,4,'hgjtuy12ridotelf',2030,'mary.santillo@gmail.com');
+INSERT INTO `metodo_pagamento` VALUES (1,'Mary',677,4,'hgjtuy12ridotelf',2030,'mary.santillo@gmail.com'),(2,'Leo',633,8,'123ASD432',2031,'mary.santillo@gmail.com');
 /*!40000 ALTER TABLE `metodo_pagamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,7 +184,7 @@ CREATE TABLE `ordine` (
 
 LOCK TABLES `ordine` WRITE;
 /*!40000 ALTER TABLE `ordine` DISABLE KEYS */;
-INSERT INTO `ordine` VALUES (1,'2000-04-23','In arrivo',1,1,'gerardo.napolitano@gmail.com');
+INSERT INTO `ordine` VALUES (1,'2000-04-23','In arrivo',1,1,'gerardo.napolitano@gmail.com'),(2,'2022-08-31','In lavorazione',1,1,'mary.santillo@gmail.com'),(3,'2022-08-31','In lavorazione',1,2,'mary.santillo@gmail.com');
 /*!40000 ALTER TABLE `ordine` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,4 +285,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-30 17:06:46
+-- Dump completed on 2022-08-31 17:18:48
