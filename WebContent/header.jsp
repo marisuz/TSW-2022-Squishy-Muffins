@@ -22,7 +22,7 @@
 	           <!-- <a href="#"></a>
 	            <a href="#"></a>  -->
 	            <a href="#">Barra di ricerca</a>
-	            <a href="Profilo_utente.jsp">Profilo utente</a>
+	            <a href="Profilo_utente.jsp">Area utente</a>
 	            <a href="Carrello.jsp">Carrello</a>
 	        </div>
 	

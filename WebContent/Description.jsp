@@ -77,7 +77,7 @@
 	
 	        frecciaGiu.onclick = function(){
 	            mostra.setAttribute("style", "display: block; border-top-left-radius:0px; border-top-right-radius:0px");
-	            sped.setAttribute("style", "border-bottom-left-radius:0px; border-bottom-right-radius:0px;")
+	            sped.setAttribute("style", "border-bottom-left-radius:0px; border-bottom-right-radius:0px;");
 	            frecciaSu.setAttribute("style", "display: block");
 	            frecciaGiu.setAttribute("style", "display: none");
 	        }
