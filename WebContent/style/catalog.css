@@ -48,6 +48,26 @@
     color: #ffc1c1;
 }
 
+.pulsante {
+	text-decoration: none;
+	border: 1px solid #ffc1c1;
+	border-radius: 2em;
+	font-size: 0.7em;
+	background-color: #ffc1c1;
+	font-weight: normal;
+	text-align:center;
+	width: 100%;
+	padding: 10px;
+    margin: 2px;
+    justify-content:space-around;
+}
+
+.pulsante:hover {
+	background-color:lightblue;
+	transition:0.3s;
+	cursor: pointer;
+	border: lightblue;
+}
 /* .imgProdotto {
 	 width:35%; 
 	 display:flex;

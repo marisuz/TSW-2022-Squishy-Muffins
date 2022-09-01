@@ -68,7 +68,7 @@
 	            		<div class="nickSX">
 	                    	<div class="areaNick">
 		                        <p><strong>Password</strong></p>
-		                        <input class="campi" type="text" name="Password" value="<%= var.getPassword()%>">
+		                        <input class="campi" type="password" name="Password" value="<%= var.getPassword()%>">
 	                    	</div>
 	            		</div>
 	        		</div>
@@ -76,7 +76,7 @@
 	 				<div class="nicknameArea">				
 	            		<div class="nickSX">
 	                    	<div class="areaNick">
-		                        <p><strong>Password</strong></p>
+		                        <p><strong>Codice Fiscale</strong></p>
 		                        <input class="campi" type="text" name="CodiceFiscale" value="<%= var.getCodice_fiscale() %>">
 	                    	</div>
 	            		</div>

@@ -39,10 +39,10 @@
 	                        <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
 	                    </div>
 	                   	<div class="col item social">
-	                    <a href="#"><i class="icon ion-social-facebook"></i></a>
-	                    <a href="#"><i class="icon ion-social-twitter"></i></a>
-	                    <a href="#"><i class="icon ion-social-snapchat"></i></a>
-	                    <a href="#"><i class="icon ion-social-instagram"></i></a>
+	                    <a href="https://www.facebook.com/dinfunisa"><i class="icon ion-social-facebook"></i></a>
+	                    <a href="https://twitter.com/dinfunisa"><i class="icon ion-social-twitter"></i></a>
+	                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="icon ion-social-snapchat"></i></a>
+	                    <a href="https://www.instagram.com/dinfunisa/?hl=it"><i class="icon ion-social-instagram"></i></a>
 	                    </div>
 	                </div>
 	                <p class="copyright">Squishy Muffins © 2022</p>

@@ -74,7 +74,6 @@ html, body {
 	border: 1px solid #ffc1c1;
 	border-radius: 2em;
 	font-size: 0.7em;
-	color:white;
 	background-color: #ffc1c1;
 	font-weight: normal;
 	text-align:center;
@@ -85,7 +84,33 @@ html, body {
 }
 
 .svuotaCarrello:hover {
-	color:white;
+	background-color:lightblue;
+	transition:0.3s;
+	cursor: pointer;
+	border: lightblue;
+}
+
+.avanti{
+	justify-content:center;
+	display:flex;
+	padding:10px;
+}
+
+.procedi {
+	text-decoration: none;
+	border: 1px solid #ffc1c1;
+	border-radius: 2em;
+	font-size: 1em;
+	background-color: #ffc1c1;
+	font-weight: normal;
+	text-align:center;
+	width: 100%;
+	padding: 10px;
+    margin: 2px;
+    justify-content:space-around;
+}
+
+.procedi:hover {
 	background-color:lightblue;
 	transition:0.3s;
 	cursor: pointer;

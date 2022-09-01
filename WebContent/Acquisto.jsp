@@ -5,8 +5,15 @@
 	Map<ProdottoBean, Integer> obj = (Map<ProdottoBean, Integer>) request.getSession().getAttribute("carrello_view");
 	if(obj == null){
 		response.sendRedirect("./Carrello.jsp");
+		return;
 	}
 	
+	UtenteBean u = (UtenteBean)request.getSession().getAttribute("Utente loggato");
+	if (u == null){
+		System.out.println("wewe");
+		response.sendRedirect("./login.jsp");
+		return;
+	}
 	
 %>    
     
@@ -40,8 +47,9 @@
 	
 	<form action="Salvataggio_ordine" method="post">
 	<% 
-		UtenteBean u = (UtenteBean)request.getSession().getAttribute("Utente loggato");
+		if (u.getPagamento() != null){
 		for(PagamentoBean pbean : u.getPagamento()){
+			
 	%>	
 		<input type="radio" name="Pagamento" value="<%= pbean.getIdpagamento()%>">
 		<p> <%=  pbean.getNominativo() %></p>
@@ -50,11 +58,11 @@
 		<p> <%=  pbean.getAnnoScadenza() %></p>
 		<p> <%=  pbean.getCodice_carta() %></p>
 		
-	<%}%>
+	<%}}%>
 	
 		<% 
-		UtenteBean ut = (UtenteBean)request.getSession().getAttribute("Utente loggato");
-		for(ConsegnaBean cbean : ut.getConsegna()){
+		if (u.getConsegna() != null){
+		for(ConsegnaBean cbean : u.getConsegna()){
 	%>	
 		<input type="radio" name="Indirizzo" value="<%= cbean.getIdconsegna()%>">
 		<p> <%=  cbean.getVia() %></p>
@@ -62,7 +70,7 @@
 		<p> <%=  cbean.getCap() %></p>
 		<p> <%=  cbean.getCitta() %></p>
 		
-	<%}%>
+	<%}}%>
 	
 	
 		<input type="submit" value="Completa ordine">

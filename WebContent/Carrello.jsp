@@ -90,7 +90,6 @@
 								</svg></button>
 							</div>
 						</form>
-									<a href="Acquisto.jsp"> <input type="button" value="Procedi"> </a>
 					</div>
 					<%}%>
 					
@@ -105,7 +104,15 @@
 	
 				</div>
 			</div>
-		
+
+
+			<div class="avanti">
+				<a href="Acquisto.jsp"><input class="procedi" type="button" value="Procedi all'acquisto"> </a>
+			</div>			
+			 
+	
+				
+				
 		<jsp:include page="footer.jsp"/>
 	
 	</body>

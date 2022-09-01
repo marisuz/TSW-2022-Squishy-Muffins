@@ -57,6 +57,11 @@ header {
     background-color: #fff;
 }
 
+.search{
+	border-radius:20px;
+	border: 1px solid black;
+}
+
 @media(max-width:800px) {
     .hamburger {
         display: block;
