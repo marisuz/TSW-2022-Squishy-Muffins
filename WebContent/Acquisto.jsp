@@ -10,7 +10,6 @@
 	
 	UtenteBean u = (UtenteBean)request.getSession().getAttribute("Utente loggato");
 	if (u == null){
-		System.out.println("wewe");
 		response.sendRedirect("./login.jsp");
 		return;
 	}
@@ -51,7 +50,7 @@
 		for(PagamentoBean pbean : u.getPagamento()){
 			
 	%>	
-		<input type="radio" name="Pagamento" value="<%= pbean.getIdpagamento()%>">
+		<input type="radio" name="Pagamento" required value="<%= pbean.getIdpagamento()%>">
 		<p> <%=  pbean.getNominativo() %></p>
 		<p> <%=  pbean.getCVV() %></p>
 		<p> <%=  pbean.getMeseScadenza() %></p>
@@ -64,7 +63,7 @@
 		if (u.getConsegna() != null){
 		for(ConsegnaBean cbean : u.getConsegna()){
 	%>	
-		<input type="radio" name="Indirizzo" value="<%= cbean.getIdconsegna()%>">
+		<input type="radio" name="Indirizzo" required value="<%= cbean.getIdconsegna()%>">
 		<p> <%=  cbean.getVia() %></p>
 		<p> <%=  cbean.getNumero() %></p>
 		<p> <%=  cbean.getCap() %></p>

@@ -7,7 +7,15 @@ public class ConsegnaBean {
 	int Cap; 
 	int Numero;
 	String Citta;
+	UtenteBean utente;
 	
+	
+	public UtenteBean getUtente() {
+		return utente;
+	}
+	public void setUtente(UtenteBean utente) {
+		this.utente = utente;
+	}
 	
 	public int getIdconsegna() {
 		return idconsegna;
