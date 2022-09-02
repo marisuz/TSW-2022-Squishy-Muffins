@@ -94,7 +94,7 @@
 		<div class="metodi">
 			<div class="met">
 				<h2><strong>Metodi di pagamento</strong></h2>
-				<form id="met_pag" method="post">
+				<form id="met_pag" method="post" action="Salva_carta_pagamento">
 					<input class="campi" type="text" placeholder="Intestatario" id="intestatario" name="intestatario">
 					<input class="campi" type="text" placeholder="Codice carta" id="cod_carta" name="cod_carta" maxlength="12">
 					<input class="campi" type="text" placeholder="CVV" id="cod_cvv" name="cod_cvv" maxlength="3">
@@ -106,11 +106,11 @@
 
 			<div class="met">
 				<h2><strong>Indirizzi di spedizione</strong></h2>
-				<form id="met_pag" method="post">
+				<form id="met_pag" method="post" action="Salva_ind_consegna">
 					<input class="campi" type="text" placeholder="Via" id="via" name="via">
 					<input class="campi" type="text" placeholder="Numero civico" id="number" name="number">
 					<input class="campi" type="text" placeholder="CAP" id="cap" name="cap" maxlength="5">
-					<input class="campi" type="text" placeholder="Privincia" id="provincia" name="provincia" maxlength="2">
+					<input class="campi" type="text" placeholder="Citta" id="provincia" name="citta">
 					<br>
 					<button class="save">Salva nuovo indirizzo di spedizione</button>
 				</form>

@@ -10,7 +10,7 @@ public class PagamentoDAO {
 	
 	private static final String TABLE_NAME = "metodo_pagamento";
 	
-	public synchronized  void doSave(PagamentoBean user) throws SQLException
+	public synchronized  void doSave(PagamentoBean user, UtenteBean ut) throws SQLException
 	{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -19,8 +19,8 @@ public class PagamentoDAO {
 		
 
 		String insertSQL = "INSERT INTO " + PagamentoDAO.TABLE_NAME
-					+ " (id_pagamento, nominativo, CVV, meseScadenza, codice_carta, annoScadenza)"
-					+ " VALUES (?, ?, ?, ?, ?, ?)";
+					+ " (id_pagamento, nominativo, CVV, meseScadenza, codice_carta, annoScadenza, e_utente)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		try
 		{
@@ -40,7 +40,8 @@ public class PagamentoDAO {
 			preparedStatement.setInt(3, user.getCVV());
 			preparedStatement.setInt(4, user.getMeseScadenza());
 			preparedStatement.setString(5, user.getCodice_carta());
-			preparedStatement.setInt(5, user.getAnnoScadenza());
+			preparedStatement.setInt(6, user.getAnnoScadenza());
+			preparedStatement.setString(7, ut.getEmail());
 	
 			preparedStatement.executeUpdate();
 
@@ -86,6 +87,10 @@ public class PagamentoDAO {
 				bean.setMeseScadenza(rs.getInt("meseScadenza"));
 				bean.setCodice_carta(rs.getString("codice_carta"));
 				bean.setAnnoScadenza(rs.getInt("annoScadenza"));
+			
+				UtenteDAO udao = new UtenteDAO();
+				bean.setUtente(udao.doRetrieveByKey(rs.getString("e_utente")));
+				
 			}
 
 		} 

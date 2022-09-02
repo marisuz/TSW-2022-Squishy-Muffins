@@ -8,7 +8,15 @@ public class PagamentoBean {
 	int meseScadenza;
 	String Codice_carta;
 	int annoScadenza;
+	UtenteBean utente;
 	
+	
+	public UtenteBean getUtente() {
+		return utente;
+	}
+	public void setUtente(UtenteBean utente) {
+		this.utente = utente;
+	}
 	
 	public int getIdpagamento() {
 		return idpagamento;

@@ -10,7 +10,7 @@ public class ConsegnaDAO {
 	
 	private static final String TABLE_NAME = "consegna";
 	
-	public synchronized void doSave(ConsegnaBean ogg) throws SQLException {
+	public synchronized void doSave(ConsegnaBean ogg, UtenteBean ut) throws SQLException {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -18,8 +18,8 @@ public class ConsegnaDAO {
 		String ID = "SELECT id_consegna FROM squishy_muffins.consegna ORDER BY id_consegna DESC LIMIT 1";
 		
 		String insertSQL = "INSERT INTO " + ConsegnaDAO.TABLE_NAME
-				+ " (id_consegna, via, cap, numero, citta)"
-				+ " VALUES (?, ?, ?, ?, ?)";
+				+ " (id_consegna, via, cap, numero, citta, utente)"
+				+ " VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try
 		{
@@ -34,11 +34,12 @@ public class ConsegnaDAO {
 			
 			
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, ogg.getIdconsegna());
+			preparedStatement.setInt(1, CID);
 			preparedStatement.setString(2, ogg.getVia());
 			preparedStatement.setInt(3, ogg.getCap());
 			preparedStatement.setInt(4, ogg.getNumero());
 			preparedStatement.setString(5, ogg.getCitta());
+			preparedStatement.setString(6, ut.getEmail());
 	
 			preparedStatement.executeUpdate();
 
@@ -82,6 +83,9 @@ public class ConsegnaDAO {
 				bean.setNumero(rs.getInt("numero"));
 				bean.setCap(rs.getInt("cap"));
 				bean.setCitta(rs.getString("citta"));
+				
+				UtenteDAO udao = new UtenteDAO();
+				bean.setUtente(udao.doRetrieveByKey(rs.getString("utente")));
 			}
 
 		} 
