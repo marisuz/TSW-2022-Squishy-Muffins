@@ -112,6 +112,59 @@ div#prova {
 	max-width:100%;
 }
 
+.Modifica2{
+	text-decoration: none;
+	border: 1px solid lightblue;
+	border-radius: 2em;
+	font-size: 1em;
+	color: black;
+	background-color: lightblue;
+	font-weight: normal;
+	text-align:center;
+	width: 100%;
+	padding: 10px;
+    margin: 2px;
+    justify-content:space-around;
+    margin-top:5px;
+}
+
+.Modifica2:hover {
+	color:black;
+	font-color:white;
+	background-color: #59e5b6;
+	transition:0.3s;
+	cursor: pointer;
+	border: lightblue;
+}
+
+.ciclo {
+    display: flex;
+    font-weight: bold;
+    justify-content:center;
+    margin-top:5px;
+    font-size:2em;
+}
+
+.dunno {
+    display: grid;
+    border: 1px solid #ffc1c1;
+    border-radius: 18px;
+    justify-content: center;
+    max-width: 30%; 
+    text-align: center;
+    padding: 5px;
+    margin: auto;
+    margin-top:5px;
+}
+
+
+
+
+
+
+
+
+
 @media(max-width:1000px){
 	.metodi{
 	flex-direction:column;

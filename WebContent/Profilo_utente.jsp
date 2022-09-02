@@ -87,7 +87,14 @@
 				
 				<form action ="Reindirizzamento" method="get">
 					<input type="submit" class="Modifica" value="Modifica dati">
-				</form>											
+				</form>		
+				
+		
+				
+				<form action ="LogoutServlet" method="get">
+					<input type="submit" class="Modifica2" value="Logout">
+				</form>	
+													
 		    </div>
 		</div>
 		
@@ -114,16 +121,43 @@
 					<br>
 					<button class="save">Salva nuovo indirizzo di spedizione</button>
 				</form>
-			</div>
-		
-			    
+			</div>	    
 		</div>
 		
+		<div class="ciclo">
+			<p>I tuoi dati di pagamento</p>
+		</div>
+		
+		<%
+			for (PagamentoBean pbean : obj.getPagamento()){ %>
+				
+				<div class="dunno"> 
+					<p><strong>Nominativo:</strong> <%=pbean.getNominativo() %></p>
+					<p><strong>Codice Carta:</strong> <%=pbean.getCodice_carta() %></p>
+					<p><strong>Mese Scadenza:</strong> <%=pbean.getMeseScadenza() %></p>
+					<p><strong>Anno Scadenza:</strong> <%=pbean.getAnnoScadenza() %></p>
+					<p><strong>CVV:</strong> ***</p>
+				</div>
+				
+			<% } %>
 
+		<div class="ciclo">
+			<p>I tuoi dati di consegna</p>
+		</div>
 
-
-		<%-- 	<%=obj.getPassword() %> --%>
+		<%
+			for (ConsegnaBean pbean : obj.getConsegna()){ %>
+				
+				<div class="dunno">
+					<p><strong>Via:</strong> <%=pbean.getVia() %></p>
+					<p><strong>Numero:</strong> <%=pbean.getNumero() %></p>
+					<p><strong>CAP:</strong> <%=pbean.getCap() %></p>
+					<p><strong>Città</strong> <%=pbean.getCitta() %></p>
+				</div>
+				
+			<% } %>
 	
+		<br><br>
 		<jsp:include page="footer.jsp" />
 	</body>
 </html>
