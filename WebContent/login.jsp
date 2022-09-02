@@ -19,26 +19,10 @@
 	    <title>Squishy Muffins|Login</title>
 	</head>
 
-
-<%-- 	<%
-	if(request.getSession().getAttribute("utente") == null){;
-		request.getSession().setAttribute("ruolo", "guest");
-	}
-	if(!request.getSession().getAttribute("ruolo").equals("guest"))
-	{
-		response.sendRedirect("home.jsp");
-		return;
-	} %> --%>
-
-
-
 	<body>
 	
 		<jsp:include page="header.jsp"/>
-	    
-	<%-- 	<%String pageRedirect = request.getParameter("pageLogin");%> --%>
-	
-	
+
 	    <form id="loginForm" class="loginForm" method="post" action="login">
 	        <h1 id="accedi">Accedi</h1>
 	        <div class="content">
@@ -48,10 +32,10 @@
 	            <div class="input-field">
 	                <input type="password" placeholder="Password" id="password" name="password">
 	            </div>
-	            
 	        </div>
+	        
 	        <p id="loginErr" class="loginError"></p>
-	        <br><br>
+
 	        <div class="action">
 	            <a href="register.jsp">Registrati</a>
 	            <button id="loginButton">Login</button>

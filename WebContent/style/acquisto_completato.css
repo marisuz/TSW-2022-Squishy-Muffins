@@ -1,0 +1,51 @@
+.acquisto {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    margin-top: 20px;
+}
+
+.grazie {
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.torna {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+input.procedi {
+    padding: 10px;
+    border: 1px solid #ffc1c1;
+    border-radius: 18px;
+    background-color: #ffc1c1;
+}
+
+.responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+/* @media (max-width:650px){
+	.acquisto{
+	max-width:70%;
+	}
+}
+
+@media (max-width:550px){
+	.acquisto{
+	max-width:50%;
+	}
+}
+
+@media (max-width:450px){
+	.acquisto{
+	max-width:40%;
+	}
+} */
