@@ -123,8 +123,7 @@
 		</div>
 		
 		<div class="jammja">
-			
-			<a href="Acquisto_completato.jsp"><input type="submit" value="Completa ordine" class="acquista"></a>
+			<input type="submit" value="Completa ordine" class="acquista">
 		</div> 
 		
 		<jsp:include page="footer.jsp"/>
