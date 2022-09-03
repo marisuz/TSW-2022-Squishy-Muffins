@@ -5,7 +5,6 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <link rel="stylesheet" href="style/header.css">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"> -->
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	    <title>Squishy Muffins Navbar</title>
@@ -18,11 +17,12 @@
 	        </div>
 	
 	        <div class="link">
-		        <a href="#">
 		        	<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 					</svg> 
-					<input class="search" type="text">
-				</a>
+					<input class="search" type="text" id="search">
+					<div id="ricerca">
+						
+					</div>
 				
 		        <a href="Catalog.jsp">Catalogo</a>
 		            
@@ -55,6 +55,39 @@
 	        hamburger.classList.toggle("active");
 	        navMenu.classList.toggle("active");
 	    })
+	    
+	    
+	     /* FUNZIONE AJAX  */
+	    $("#search").keyUp( function(){
+	    	$("#ricerca").empty();
+	    	var risultato = ricercaAjax($("#search").val());
+	    	} 
+	    )
+	    
+	    function ricercaAjax(nomeProdotto){
+	    	return $.ajax({
+	    		url : "ricerca",
+	    		type : "GET",
+	    		async : false,
+	    		cache : false,
+	    		timeout : 30000,
+	    		dataType : "json",
+	    		data : {
+	    			action : "search",
+	    			prodotto : nomeProdotto
+	    		},
+	    		success : function (data){
+	    			mostraElemento(data);
+	    			return data
+	    		},
+	    		fail : function (msg){
+	    			alert("negativo")
+	    			return true;
+	    		}	
+	    	});
+	    }
 	</script>
+	
+	
 
 </html>

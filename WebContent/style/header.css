@@ -60,6 +60,7 @@ header {
 .search{
 	border-radius:20px;
 	border: 1px solid black;
+	text-align:center;
 }
 
 @media(max-width:800px) {
