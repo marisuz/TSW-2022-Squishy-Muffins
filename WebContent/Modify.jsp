@@ -59,13 +59,14 @@
 				</div>
 				
 				<div class="modify">
-					<p class="p_mod">Modificare?</p>
+					<p class="p_mod">Eliminare?</p>
 					<div style= "display:flex;"><input type="radio" name="Rimosso" value="1" <%if(var.getRimosso() == 1) out.println("checked"); %>> <p>Yes</p> </div>
 					<div style= "display:flex;"><input type="radio" name="Rimosso" value="0" <%if(var.getRimosso() == 0) out.println("checked"); %>> <p>No</p></div>
 				</div>
 				
 				<div class="modify">
 					<input type="submit" value="Invio">
+					<input type="number" name="Quantità" value="<%= var.getQuantita()%>">
 				</div>
 				
 			</div>

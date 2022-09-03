@@ -76,8 +76,9 @@
 	            	</ul>
     			</div>
 			</div>
-		                     
+		                <form action="Salvataggio_ordine" method="post"> 
 						<div class="metodi">
+							
 							<span class="text-muted">Seleziona il tuo metodo di pagamento</span>
 								<% 
 									if (u.getPagamento() != null){
@@ -118,14 +119,15 @@
 						</div>
 						<%}%> 
 						
-						
-
-		</div>
-		
 		<div class="jammja">
 			
-			<a href="Acquisto_completato.jsp"><input type="submit" value="Completa ordine" class="acquista"></a>
-		</div> 
+			<input type="submit" value="Completa ordine" class="acquista">
+			
+		</div> 			
+			</form>
+		</div>
+		
+
 		
 		<jsp:include page="footer.jsp"/>
 	</body>
