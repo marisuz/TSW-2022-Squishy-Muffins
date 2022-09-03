@@ -1,0 +1,245 @@
+.admin_action{
+	display:flex;
+	justify-content:center;
+	margin:10px;
+}
+
+.spazio_bottoni{
+	display:flex;
+	justify-content:center;
+	margin:10px;
+}
+
+.admin_button{
+	text-decoration: none;
+	border: 1px solid #ffc1c1;
+	border-radius: 2em;
+	font-size: 1em;
+	color: black;
+	background-color: #ffc1c1;
+	font-weight: normal;
+	text-align:center;
+	width: 100%;
+	padding: 10px;
+    margin: 2px;
+    justify-content:space-around;
+}
+
+.admin_button:hover {
+	color:black;
+	font-color:white;
+	background-color:lightblue;
+	transition:0.3s;
+	cursor: pointer;
+	border: lightblue;
+}
+
+.admin_button:nth-child(2){
+	margin-left:10px;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 90%;
+  border: 1px solid black;
+  table-layout: fixed;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: lightblue;
+}
+
+
+.datiPersonali{
+	justify-content:center;
+	display:grid;
+	/* max-width:50%; */
+}
+
+.Modifica{
+	text-decoration: none;
+	border: 1px solid #ffc1c1;
+	border-radius: 2em;
+	font-size: 1em;
+	color: black;
+	background-color: #ffc1c1;
+	font-weight: normal;
+	text-align:center;
+	width: 100%;
+	padding: 10px;
+    margin: 2px;
+    justify-content:space-around;
+}
+
+a:hover{
+	color:white;
+	text-decoration:none;
+}
+
+.Modifica:hover {
+	color:black;
+	font-color:white;
+	background-color:lightblue;
+	transition:0.3s;
+	cursor: pointer;
+	border: lightblue;
+}
+
+.save{
+	text-decoration: none;
+	border: 1px solid #ffc1c1;
+	border-radius: 2em;
+	font-size: 1em;
+	color: black;
+	background-color: #ffc1c1;
+	font-weight: normal;
+	text-align:center;
+	width: 50%;
+	padding: 10px;
+    margin: 10px;
+    justify-content:space-around;
+}
+
+.save:hover{
+	color:black;
+	font-color:white;
+	background-color:lightblue;
+	transition:0.3s;
+	cursor: pointer;
+	border: lightblue;
+}
+
+.campi{
+	border-radius:20px;
+	border: 1px solid grey;
+	text-align:center;
+	margin:2px;
+}
+
+form#met_pag{
+	padding:10px;
+}
+
+div#prova {
+    margin: 0;
+}
+
+.datiPersonali p {
+	font-size: 1em;
+}
+
+.areaNick{
+	margin-left:5px;
+}
+.areaUtente {
+  margin: 1% 15%;
+  padding:2%;
+}
+
+.nickSX, .pwSX{
+	display:flex;
+	width:50%;
+	padding:2%;
+}
+
+.nickDX, .pwDX{
+	width:50%;
+}
+
+.nicknameArea, .passwordArea{
+	display:flex;
+	width:80%;
+	margin:0 10%;
+}
+
+.metodi{
+	display:flex;
+	justify-content:center;
+}
+
+.met{
+	display:flex;
+	align-items: center;
+	padding:20px;
+	max-width:100%;
+}
+
+.Modifica2{
+	text-decoration: none;
+	border: 1px solid lightblue;
+	border-radius: 2em;
+	font-size: 1em;
+	color: black;
+	background-color: lightblue;
+	font-weight: normal;
+	text-align:center;
+	width: 100%;
+	padding: 10px;
+    margin: 2px;
+    justify-content:space-around;
+    margin-top:5px;
+}
+
+.Modifica2:hover {
+	color:black;
+	font-color:white;
+	background-color: #59e5b6;
+	transition:0.3s;
+	cursor: pointer;
+	border: lightblue;
+}
+
+.ciclo {
+    display: flex;
+    font-weight: bold;
+    justify-content:center;
+    margin-top:5px;
+    font-size:2em;
+}
+
+.dunno {
+    display: grid;
+    border: 1px solid #ffc1c1;
+    border-radius: 18px;
+    justify-content: center;
+    max-width: 30%; 
+    text-align: center;
+    padding: 5px;
+    margin: auto;
+    margin-top:5px;
+}
+
+.tabella{
+	display:flex;
+	justify-content:center;
+} 
+
+
+
+
+
+
+
+@media(max-width:1000px){
+	.metodi{
+	flex-direction:column;
+	}
+}
+
+
+@media (max-width: 800px){
+	.areaUtente {
+  		margin: 1% 1%;
+  		padding:2%;
+	}
+	
+	.metodi{
+		flex-direction:column;
+	}
