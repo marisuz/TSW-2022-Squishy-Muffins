@@ -46,9 +46,6 @@
 			// Il for crea una variabile del tipo ProdottoBean ed ad ogni iterazione va ad assegnare a quella variabile il contenuto di obj all'i-esima posizione 
 			if (obj != null)
 				for (ProdottoBean var : obj) {
-					if (var.getRimosso() == 1) {
-						continue;
-					}
 			%>
 	
 			<!--  POPUP DA INTEGRARE CON LO SCRIPT SOTTO: 
@@ -64,7 +61,7 @@
 					</a> <%= String.format("%.02f", var.getPrezzo()) %> &euro;
 				<a href="Modify?action=mod&id=<%= var.getCodprodotto()%>">    <input type="button" value="Modifica"> </a>
 						
-				
+				<p>	<%= var.getRimosso()%></p>
 			</div>
 					
 		

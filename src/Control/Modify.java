@@ -65,8 +65,9 @@ public class Modify extends HttpServlet {
 					e1.printStackTrace();
 				}
 				obj.setNome((String) request.getParameter("Nome"));
-				obj.setPrezzo(Integer.parseInt(request.getParameter("Prezzo")));
+				obj.setPrezzo(Float.parseFloat(request.getParameter("Prezzo")));
 				obj.setDescrizione((String) request.getParameter("Descrizione"));
+				obj.setQuantita(Integer.parseInt(request.getParameter("Quantità")));
 				
 				Part var = request.getPart("Immagine");
 				System.out.println(GetFileName(var).equalsIgnoreCase(""));

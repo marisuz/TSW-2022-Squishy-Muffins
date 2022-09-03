@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Model.Carrello;
 import Model.ComposizioneDAO;
 import Model.ConsegnaDAO;
 import Model.OrdineBean;
@@ -56,6 +57,8 @@ public class Salvataggio_ordine extends HttpServlet {
 			obj.setCodUtente(ut);
 			
 			obj.setComposizione((HashMap<ProdottoBean, Integer>) request.getSession().getAttribute("carrello_view"));
+			request.getSession().setAttribute("carrello_view", new HashMap<ProdottoBean,Integer>());
+			request.getSession().setAttribute("carrello", new Carrello());
 			
 			obj.setIdOrdine(odao.doSave(obj));
 			

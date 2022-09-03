@@ -91,7 +91,7 @@
 				
 		
 				
-				<form action ="LogoutServlet" method="get">
+				<form action ="Logout_servlet" method="get">
 					<input type="submit" class="Modifica2" value="Logout">
 				</form>	
 													
