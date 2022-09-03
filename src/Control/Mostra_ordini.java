@@ -17,14 +17,14 @@ import Model.OrdineDAO;
 /**
  * Servlet implementation class Ordine
  */
-@WebServlet("/Ordine")
-public class Ordine extends HttpServlet {
+@WebServlet("/Mostra_ordini")
+public class Mostra_ordini extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Ordine() {
+    public Mostra_ordini() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,17 +36,49 @@ public class Ordine extends HttpServlet {
 		
 		OrdineDAO odao = new OrdineDAO();
 		LinkedList<OrdineBean> var = null;  
+		String action = request.getParameter("action");
 		
-		try {
-			var = (LinkedList<OrdineBean>) odao.doRetrieveAll(null);
-			System.out.println(var);
-			request.setAttribute("ordini", var);
-			RequestDispatcher rs = request.getRequestDispatcher("Ordine.jsp");
-			rs.include(request, response);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if(action.equals("mostra")) {
+			try {
+				var = (LinkedList<OrdineBean>) odao.doRetrieveAll(null);
+				System.out.println(var);
+				request.setAttribute("ordini", var);
+				RequestDispatcher rs = request.getRequestDispatcher("Ordine.jsp");
+				rs.include(request, response);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+		else if(action.equals("data")) {
+			
+			try {
+				var = (LinkedList<OrdineBean>) odao.doRetrieveAll("data_ordine");
+				System.out.println(var);
+				request.setAttribute("ordini", var);
+				RequestDispatcher rs = request.getRequestDispatcher("Ordine.jsp");
+				rs.include(request, response);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			
+			
+		}else if(action.equals("utente")) {
+			
+			try {
+				var = (LinkedList<OrdineBean>) odao.doRetrieveAll("cod_utente");
+				System.out.println(var);
+				request.setAttribute("ordini", var);
+				RequestDispatcher rs = request.getRequestDispatcher("Ordine.jsp");
+				rs.include(request, response);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
 		
 		
 	}
