@@ -2,6 +2,7 @@ package Control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -56,8 +57,8 @@ public class Salvataggio_ordine extends HttpServlet {
 			UtenteBean ut = (UtenteBean)request.getSession().getAttribute("Utente loggato");
 			obj.setCodUtente(ut);
 			
-			obj.setComposizione((HashMap<ProdottoBean, Integer>) request.getSession().getAttribute("carrello_view"));
-			request.getSession().setAttribute("carrello_view", new HashMap<ProdottoBean,Integer>());
+			obj.setComposizione((HashMap <ProdottoBean, ArrayList<Double> >) request.getSession().getAttribute("carrello_view"));
+			request.getSession().setAttribute("carrello_view", new HashMap<ProdottoBean,ArrayList<Double>>());
 			request.getSession().setAttribute("carrello", new Carrello());
 			
 			obj.setIdOrdine(odao.doSave(obj));
