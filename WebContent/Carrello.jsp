@@ -61,7 +61,7 @@
 							<p class="prodPrezzo">Prezzo: <%= String.format("%.02f", var.getPrezzo()) %> &euro;</p>
 						</div>
 						<div>	
-							<label class="prodLabel" for="quantità">Quantità: <%= entry.getValue() %> </label>
+							<label class="prodLabel" for="quantità">Quantità: <%= entry.getValue().get(0) %> </label>
 							<form action="Cart" method="post">
 								<input type="hidden" name="action" value="sub">
 								<input type="hidden" name="id" value="<%=var.getCodprodotto()%>">

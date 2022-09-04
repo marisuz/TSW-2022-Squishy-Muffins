@@ -20,8 +20,8 @@ public class ProdottoDAO
 		
 
 		String insertSQL = "INSERT INTO " + ProdottoDAO.TABLE_NAME
-					+ " (nome, prezzo, descrizione, quantita, codi_categoria)"
-					+ " VALUES (?, ?, ?, ?)";
+					+ " (nome, prezzo, descrizione, quantita, codi_categoria, iva)"
+					+ " VALUES (?, ?, ?, ?, ?, ?)";
 
 		try
 		{
@@ -41,6 +41,7 @@ public class ProdottoDAO
 			preparedStatement.setString(3, user.getDescrizione());
 			preparedStatement.setInt(4, user.getQuantita());
 			preparedStatement.setInt(5, user.getCategoria().getCodcategoria());
+			preparedStatement.setDouble(6, user.getIva());
 	
 			preparedStatement.executeUpdate();
 
@@ -86,6 +87,7 @@ public class ProdottoDAO
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setRimosso(rs.getInt("rimosso"));
 				bean.setQuantita(rs.getInt("quantita"));
+				bean.setIva(rs.getDouble("iva"));
 				
 				ImmagineDAO pdao = new ImmagineDAO();
 				bean.setImmagine(pdao.doRetrieveByKey(rs.getString("cod_immagine")));
@@ -181,6 +183,7 @@ public class ProdottoDAO
 				bean.setCategoria(cdao.doRetrieveByKey(rs.getInt("codi_categoria")));
 				
 				bean.setQuantita(rs.getInt("quantita"));
+				bean.setIva(rs.getDouble("iva"));
 				bean.setRimosso(rs.getInt("rimosso"));
 				
 				product.add(bean);
@@ -208,7 +211,7 @@ public class ProdottoDAO
 		PreparedStatement preparedStatement = null;
 
 		String upsql = "UPDATE " + ProdottoDAO.TABLE_NAME + 
-						" SET nome = ?, prezzo = ?, descrizione = ?, cod_immagine = ?, rimosso = ?, quantita = ?, codi_categoria = ?  " + 
+						" SET nome = ?, prezzo = ?, descrizione = ?, cod_immagine = ?, rimosso = ?, quantita = ?, codi_categoria = ?, iva = ?  " + 
 						"WHERE (cod_prodotto = ?) ";
 		try 
 		{
@@ -222,7 +225,8 @@ public class ProdottoDAO
 			preparedStatement.setInt(5, var.getRimosso());
 			preparedStatement.setInt(6, var.getQuantita());
 			preparedStatement.setInt(7, var.getCategoria().getCodcategoria());
-			preparedStatement.setInt(8, var.getCodprodotto());
+			preparedStatement.setDouble(8, var.getIva());
+			preparedStatement.setInt(9, var.getCodprodotto());
 			
 			preparedStatement.executeUpdate();
 			//connection.commit();

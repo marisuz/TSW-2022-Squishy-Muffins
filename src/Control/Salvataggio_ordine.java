@@ -61,6 +61,8 @@ public class Salvataggio_ordine extends HttpServlet {
 			request.getSession().setAttribute("carrello_view", new HashMap<ProdottoBean,ArrayList<Double>>());
 			request.getSession().setAttribute("carrello", new Carrello());
 			
+			obj.setPrezzo_totale(Double.parseDouble(request.getParameter("pf")));
+			
 			obj.setIdOrdine(odao.doSave(obj));
 			
 			ComposizioneDAO cmdao = new ComposizioneDAO();

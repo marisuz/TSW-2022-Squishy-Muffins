@@ -2,6 +2,7 @@ package Control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -77,11 +78,12 @@ public class Cart extends HttpServlet {
 			
 			if(action.equalsIgnoreCase("view")) {
 				
-				HashMap<ProdottoBean, Integer> ogg = new HashMap<>();
+				HashMap<ProdottoBean, ArrayList<Double>> ogg = new HashMap<>();
 				ProdottoDAO pdao = new ProdottoDAO();
 				
 				for(Entry<Integer, Integer> entry : obj.getCart().entrySet()) {
 					
+					Double dou = (double) Integer.valueOf(entry.getValue());
 					ProdottoBean var = new ProdottoBean();
 					
 					try {
@@ -90,7 +92,13 @@ public class Cart extends HttpServlet {
 						e.printStackTrace();
 					}
 					
-					ogg.put(var, entry.getValue()); //Grazie alla funzione nel foreach riusciamo a visualizzare tutti quanti gli oggetti nella mappa facendo riferimento alla chiave con il suo valore ovvero la quantità
+					ArrayList<Double> arr = new ArrayList<Double>();
+					
+					arr.add(dou);
+					arr.add(var.getIva());
+					arr.add((double)var.getPrezzo());
+					
+					ogg.put(var, arr); //Grazie alla funzione nel foreach riusciamo a visualizzare tutti quanti gli oggetti nella mappa facendo riferimento alla chiave con il suo valore ovvero la quantità
 				}
 				
 				request.setAttribute("carrello_view", ogg);
