@@ -7,6 +7,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	    <title>Squishy Muffins Navbar</title>
 	</head>
 
@@ -18,11 +19,13 @@
 	
 	        <div class="link">
 		        	
-					<div id="ricerca" class="ricerca">
+					<div id="prova1" class="ricerca">
 						<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-					</svg> 
-					<input class="search" type="text" id="search">
+						</svg>  
+						<input class="search" type="text" id="search">
+						<div id="ricerca" ></div>
 					</div>
+					
 				
 		        <a href="Catalog.jsp">Catalogo</a>
 		            
@@ -56,36 +59,73 @@
 	        navMenu.classList.toggle("active");
 	    })
 	    
-	    
 	     /* FUNZIONE AJAX  */
-	    $("#search").keyUp( function(){
-	    	$("#ricerca").empty();
-	    	var risultato = ricercaAjax($("#search").val());
-	    	} 
-	    )
+	     
+
+		$(document).ready(function(){
+		
+			$("#search").keyup(function(){
+
+		    	$("#ricerca").empty();
+		    	var risultato = ricercaAjax($("#search").val());
+		    	} 
+		    )
+		    
+		    function ricercaAjax(nomeProdotto){
+		    	return $.ajax({
+		    		url : "ricerca",
+		    		type : "GET",
+		    		async : false,
+		    		cache : false,
+		    		timeout : 30000,
+		    		dataType : "json",
+		    		data : {
+		    			action : "search",
+		    			prodotto : nomeProdotto
+		    		},
+		    		success : function (data){
+
+		    			
+		    			mostraElemento(data);
+		    			return data
+		    		},
+		    		fail : function (msg){
+		    			alert("negativo")
+		    			return true;
+		    		}	
+		    	});
+		    }
+		    
+		    function mostraElemento(data){
+		    	
+		    	if(data.length > 0){
+
+		    		$("#ricerca").empty();
+		    		$("#ricerca").show();
+		    		data.forEach(e => {
+		    			
+		    			var myvar=  '<a href="Catalogo?action=view&id='+e.codprodotto+'">'+
+	                    			'<div style="border:1px solid brown; width:200px; background-color:#fcefd4; right: 50px; z-index:"999999999"; visibility:visible;>'+
+	                    			'<h2 class="titolo-ricerca">'+e.Nome+'</h2></a>'
+	                    			+ '<a href="Catalogo?action=view&id='+e.codprodotto+'"><img class="immagine-ricerca" src="'+ e.Immagine.path +'">'+
+	                        		'</a></div>';
+	                $("#ricerca").append( myvar );
+		    		})	
+		    	}
+		    	
+		    	else if (data.length == 0){
+		    		$("#ricerca").hide();
+		    	}
+		    }	
+			
+			
+		})
+		
+		
+		
+
 	    
-	    function ricercaAjax(nomeProdotto){
-	    	return $.ajax({
-	    		url : "ricerca",
-	    		type : "GET",
-	    		async : false,
-	    		cache : false,
-	    		timeout : 30000,
-	    		dataType : "json",
-	    		data : {
-	    			action : "search",
-	    			prodotto : nomeProdotto
-	    		},
-	    		success : function (data){
-	    			mostraElemento(data);
-	    			return data
-	    		},
-	    		fail : function (msg){
-	    			alert("negativo")
-	    			return true;
-	    		}	
-	    	});
-	    }
+	    
 	</script>
 	
 	

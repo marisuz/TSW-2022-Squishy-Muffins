@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -202,14 +203,14 @@ public class ProdottoDAO
 		return product;
 	}
 	
-	public synchronized Collection<ProdottoBean> doRetrieveLike(String nome) throws SQLException 
+	public synchronized ArrayList<ProdottoBean> doRetrieveLike(String nome) throws SQLException 
 	{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Collection<ProdottoBean> product = new LinkedList<ProdottoBean>();
+		ArrayList<ProdottoBean> product = new ArrayList<ProdottoBean>();
 
-		String selectSQL = "SELECT * FROM " + ProdottoDAO.TABLE_NAME + "where nome like ? order by nome DESC";
+		String selectSQL = "SELECT * FROM " + ProdottoDAO.TABLE_NAME + " where nome like ? order by nome DESC ";
 		
 		try 
 		{
@@ -221,6 +222,7 @@ public class ProdottoDAO
 
 			while (rs.next()) 
 			{
+				
 				ProdottoBean bean = new ProdottoBean();
 
 				bean.setCodprodotto(rs.getInt("cod_prodotto"));

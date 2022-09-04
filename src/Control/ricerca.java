@@ -3,6 +3,7 @@ package Control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,7 @@ import com.google.gson.Gson;
 
 import Model.ProdottoBean;
 import Model.ProdottoDAO;
+import Model.ResponseStatusMessage;
 
 /**
  * Servlet implementation class ricerca
@@ -49,14 +51,24 @@ public class ricerca extends HttpServlet {
 		if (action.equalsIgnoreCase("search") ) {
 			ProdottoDAO pdao = new ProdottoDAO();
 			ArrayList <ProdottoBean> elenco = new ArrayList<>();
+			if (request.getParameter("prodotto").equals("")) {
+				return;
+			}
+				
 			try {
 				elenco = (ArrayList<ProdottoBean>) pdao.doRetrieveLike(request.getParameter("prodotto"));
+				response.setStatus(200);
+				response.getWriter().print(gson.toJson(elenco));
+				response.getWriter().flush();	
+				return;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				response.setStatus(500);
+				response.getWriter().print(gson.toJson(new ResponseStatusMessage(500,"error")));
+				response.getWriter().flush();
+				return;
 			}
-			
-			
 		}
 	}
 
