@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -201,6 +202,62 @@ public class ProdottoDAO
 		}
 		return product;
 	}
+	
+	public synchronized ArrayList<ProdottoBean> doRetrieveLike(String nome) throws SQLException 
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<ProdottoBean> product = new ArrayList<ProdottoBean>();
+
+		String selectSQL = "SELECT * FROM " + ProdottoDAO.TABLE_NAME + " where nome like ? order by nome DESC ";
+		
+		try 
+		{
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, nome + "%");
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) 
+			{
+				
+				ProdottoBean bean = new ProdottoBean();
+
+				bean.setCodprodotto(rs.getInt("cod_prodotto"));
+				bean.setNome(rs.getString("nome"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				
+				ImmagineDAO pdao = new ImmagineDAO();
+				bean.setImmagine(pdao.doRetrieveByKey(rs.getString("cod_immagine")));
+				
+				CategoriaDAO cdao = new CategoriaDAO();
+				bean.setCategoria(cdao.doRetrieveByKey(rs.getInt("codi_categoria")));
+				
+				bean.setQuantita(rs.getInt("quantita"));
+				bean.setRimosso(rs.getInt("rimosso"));
+				
+				product.add(bean);
+			}
+
+		} 
+		finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return product;
+	}
+	
 	
 	public synchronized void doUpdate (ProdottoBean var) throws SQLException {
 		
