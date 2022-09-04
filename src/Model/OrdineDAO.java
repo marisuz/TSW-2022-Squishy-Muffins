@@ -20,8 +20,8 @@ public class OrdineDAO {
 		
 
 		String insertSQL = "INSERT INTO " + OrdineDAO.TABLE_NAME
-					+ " (id_ordine, data_ordine, stato_ordine, cod_consegna, cod_pagamento, cod_utente)"
-					+ " VALUES (?, ?, ?, ?, ?, ?)";
+					+ " (id_ordine, data_ordine, stato_ordine, cod_consegna, cod_pagamento, cod_utente, prezzo_totale)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		try
 		{
@@ -41,6 +41,7 @@ public class OrdineDAO {
 			preparedStatement.setInt(4, user.getCodConsegna().getIdconsegna());
 			preparedStatement.setInt(5, user.getCodPagamento().getIdpagamento());
 			preparedStatement.setString(6, user.getCodUtente().getEmail());
+			preparedStatement.setDouble(7, user.getPrezzo_totale());
 	
 			preparedStatement.executeUpdate();
 			return CID;
@@ -83,6 +84,7 @@ public class OrdineDAO {
 				bean.setIdOrdine(rs.getInt("id_ordine"));
 				bean.setData_ordine(rs.getDate("data_ordine"));
 				bean.setStato_ordine(rs.getString("stato_ordine"));
+				bean.setPrezzo_totale(rs.getDouble("prezzo_totale"));
 				
 				ConsegnaDAO cdao = new ConsegnaDAO();
 				ConsegnaBean cbean = cdao.doRetrieveByKey(rs.getInt("cod_consegna"));
@@ -95,7 +97,13 @@ public class OrdineDAO {
 				UtenteDAO udao = new UtenteDAO();
 				UtenteBean ubean = udao.doRetrieveByKey(rs.getString("cod_utente"));
 				bean.setCodUtente(ubean);
+				
+				ComposizioneDAO codao = new ComposizioneDAO();
+				bean.setComposizione(codao.doRetrieveByOrdine(rs.getInt("id_ordine")));
+				
 			}
+			
+			
 
 		} 
 		finally 
@@ -152,7 +160,7 @@ public class OrdineDAO {
 		PreparedStatement preparedStatement = null;
 
 		String upsql = "UPDATE " + OrdineDAO.TABLE_NAME + 
-						" SET data_ordine = ?, stato_ordine = ?, cod_consegna = ?, cod_pagamento = ?, cod_utente = ?,  " + 
+						" SET data_ordine = ?, stato_ordine = ?, cod_consegna = ?, cod_pagamento = ?, cod_utente = ?, prezzo_totale = ? " + 
 						"WHERE id_ordine = ?";
 		try 
 		{
@@ -164,6 +172,7 @@ public class OrdineDAO {
 			preparedStatement.setInt(3, var.getCodConsegna().getIdconsegna());
 			preparedStatement.setInt(4, var.getCodPagamento().getIdpagamento());
 			preparedStatement.setString(5, var.getCodUtente().getEmail());
+			preparedStatement.setDouble(6, var.getPrezzo_totale());
 			
 			preparedStatement.executeUpdate();
 			//connection.commit();
@@ -212,6 +221,7 @@ public class OrdineDAO {
 				bean.setIdOrdine(rs.getInt("id_ordine"));
 				bean.setData_ordine(rs.getDate("data_ordine"));
 				bean.setStato_ordine(rs.getString("stato_ordine"));
+				bean.setPrezzo_totale(rs.getDouble("prezzo_totale"));
 				
 				ConsegnaDAO cdao = new ConsegnaDAO();
 				ConsegnaBean cbean = cdao.doRetrieveByKey(rs.getInt("cod_consegna"));
@@ -224,6 +234,9 @@ public class OrdineDAO {
 				UtenteDAO udao = new UtenteDAO();
 				UtenteBean ubean = udao.doRetrieveByKey(rs.getString("cod_utente"));
 				bean.setCodUtente(ubean);
+				
+				ComposizioneDAO codao = new ComposizioneDAO();
+				bean.setComposizione(codao.doRetrieveByOrdine(rs.getInt("id_ordine")));
 				
 				order.add(bean);
 			}

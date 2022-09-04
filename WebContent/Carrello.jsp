@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="java.util.*, Model.*"%>
     
 <%
-	Map<ProdottoBean, Integer> obj = (Map<ProdottoBean, Integer>)request.getAttribute("carrello_view"); 
+	Map<ProdottoBean, ArrayList<Double>> obj = (Map<ProdottoBean, ArrayList<Double>>)request.getAttribute("carrello_view"); 
 	if(obj == null){
 		response.sendRedirect("./Cart?action=view");
 	}
@@ -46,7 +46,7 @@
 				
 				<% // Il for crea una variabile del tipo ProdottoBean ed ad ogni iterazione va ad assegnare a quella variabile il contenuto di obj all'i-esima posizione 
 				if(obj != null && !obj.isEmpty()){
-				for(Map.Entry<ProdottoBean, Integer> entry : obj.entrySet()){
+				for(Map.Entry<ProdottoBean, ArrayList<Double>> entry : obj.entrySet()){
 						ProdottoBean var = entry.getKey();
 				%>
 				
@@ -61,7 +61,7 @@
 							<p class="prodPrezzo">Prezzo: <%= String.format("%.02f", var.getPrezzo()) %> &euro;</p>
 						</div>
 						<div>	
-							<label class="prodLabel" for="quantità">Quantità: <%= entry.getValue() %> </label>
+							<label class="prodLabel" for="quantità">Quantità: <%= entry.getValue().get(0) %> </label>
 							<form action="Cart" method="post">
 								<input type="hidden" name="action" value="sub">
 								<input type="hidden" name="id" value="<%=var.getCodprodotto()%>">

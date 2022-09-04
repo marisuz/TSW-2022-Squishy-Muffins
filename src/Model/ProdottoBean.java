@@ -10,7 +10,15 @@ public class ProdottoBean {
 	int Rimosso;
 	CategoriaBean Categoria;
 	int Quantita;
+	double Iva;
 	
+	
+	public double getIva() {
+		return Iva;
+	}
+	public void setIva(double iva) {
+		Iva = iva;
+	}
 	
 	public int getCodprodotto() {
 		return codprodotto;

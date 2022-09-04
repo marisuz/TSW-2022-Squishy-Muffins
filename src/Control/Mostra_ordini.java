@@ -75,12 +75,7 @@ public class Mostra_ordini extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
-			
-		}
-		
-		
-		
+		}	
 	}
 
 	/**

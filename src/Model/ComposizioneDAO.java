@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ComposizioneDAO {
@@ -17,8 +18,8 @@ public class ComposizioneDAO {
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + ComposizioneDAO.TABLE_NAME
-					+ " (codi_prodotto, num_ordine, quantita)"
-					+ " VALUES (?, ?, ?)";
+					+ " (codi_prodotto, num_ordine, quantita, iva, prezzo)"
+					+ " VALUES (?, ?, ?, ?, ?)";
 
 		try
 		{
@@ -31,8 +32,10 @@ public class ComposizioneDAO {
 				preparedStatement = connection.prepareStatement(insertSQL);
 				preparedStatement.setInt(1, bean.getCodprodotto());
 				preparedStatement.setInt(2, user.getIdOrdine());
-				preparedStatement.setInt(3, user.getComposizione().get(bean));		// Attraverso la chiave nel bean, prendo la quantità del prodotto nell'ordine
-		
+				preparedStatement.setDouble(3, user.getComposizione().get(bean).get(0));		// Attraverso la chiave nel bean, prendo la quantità del prodotto nell'ordine
+				preparedStatement.setDouble(4, user.getComposizione().get(bean).get(1));
+				preparedStatement.setDouble(5, user.getComposizione().get(bean).get(2));
+				
 				preparedStatement.executeUpdate();
 			}
 				//connection.commit(); //Salva le modifiche sul database
@@ -52,12 +55,12 @@ public class ComposizioneDAO {
 		
 	}
 	
-	public synchronized HashMap<ProdottoBean, Integer> doRetrieveByOrdine(int idordine) throws SQLException			//La funzione mi riporta il prodotto con la sua quantità nell'ordine
+	public synchronized HashMap<ProdottoBean, ArrayList<Double>> doRetrieveByOrdine(int idordine) throws SQLException			//La funzione mi riporta il prodotto con la sua quantità nell'ordine
 	{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		HashMap<ProdottoBean, Integer> bean = new HashMap<>();
+		HashMap<ProdottoBean, ArrayList<Double>> bean = new HashMap<>();
 
 		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE num_ordine = ?";
 
@@ -73,7 +76,13 @@ public class ComposizioneDAO {
 			{
 				
 				ProdottoDAO pdao = new ProdottoDAO();
-				bean.put(pdao.doRetrieveByKey(rs.getInt("codi_prodotto")), rs.getInt("quantita"));
+				ArrayList<Double> array = new ArrayList<Double>();
+				array.add(rs.getDouble("quantita"));
+				array.add(rs.getDouble("iva"));
+				array.add(rs.getDouble("prezzo"));
+				
+				bean.put(pdao.doRetrieveByKey(rs.getInt("codi_prodotto")), array);
+				
 			}
 
 		} 

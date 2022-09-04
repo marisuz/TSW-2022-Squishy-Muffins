@@ -11,7 +11,15 @@
     	if (!obj.isAdmin()){ %>
 		<jsp:forward page="Catalog.jsp" />
 		
-	<% }  %>
+	<% } 
+    	ArrayList<OrdineBean> arr = request.getAttribute("ordini");	
+    	if(arr == null){
+    		response.sendRedirect("Mostra_ordini?action=mostra");
+    		return;
+    	}
+    	
+    	
+    %>
     
 <!DOCTYPE html>
 <html>
@@ -118,17 +126,24 @@
 					<th>Stato ordine</th>
 					<th>Nome/Cognome utente </th>
 					<th>Metodo di pagamento </th>
+					<th>Totale</th>
 					<th>Ordine</th>
 				</tr>
-				
+			<%for(OrdineBean bean : arr){ %>
 				<tr> <!-- CONTENUTO TABELLA -->
-					<td>sdfsfd</td>
-					<td>sfdsf</td>
-					<td>sdfsdf</td>
-					<td>sdfsdf</td>
-					<td>sdfsdf</td>
-					<td>sdfsfd</td>
+					<td> <%= bean.getIdOrdine() %></td>
+					<td> <%= bean.getData_ordine() %></td>
+					<td> <%= bean.getStato_ordine() %></td>
+					<td> <%= bean.getCodUtente() %></td>
+					<td> <%= bean.getCodPagamento() %></td>
+					<td> <%= bean.get %></td>
+					<td> <% for(){
+						
+						
+						
+					}%></td>
 				</tr>
+				<%} %>
 			</table>
  		</div> 
 

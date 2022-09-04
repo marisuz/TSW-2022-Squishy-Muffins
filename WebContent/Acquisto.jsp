@@ -2,7 +2,7 @@
     pageEncoding="utf-8" import="java.util.*, Model.*"%>
     
 <% 
-	Map<ProdottoBean, Integer> obj = (Map<ProdottoBean, Integer>) request.getSession().getAttribute("carrello_view");
+	Map<ProdottoBean, ArrayList<Double>> obj = (Map<ProdottoBean, ArrayList<Double>>) request.getSession().getAttribute("carrello_view");
 	if(obj == null){
 		response.sendRedirect("./Carrello.jsp");
 		return;
@@ -46,10 +46,10 @@
 	    		
 		    			<% 
 						if(obj != null && !obj.isEmpty()){
-						float Prezzo_finale = 0; 
-						for(Map.Entry<ProdottoBean, Integer> entry : obj.entrySet()){
+						double Prezzo_finale = 0; 
+						for(Map.Entry<ProdottoBean, ArrayList<Double>> entry : obj.entrySet()){
 							ProdottoBean var = entry.getKey();
-						float Prezzo_totale =(obj.get(var) * var.getPrezzo());
+						double Prezzo_totale =(entry.getValue().get(0) * var.getPrezzo());
 						%>
 		    		
 		    			<li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -77,6 +77,7 @@
     			</div>
 			</div>
 		                <form action="Salvataggio_ordine" method="post"> 
+		                <input type="hidden" value="<%= Prezzo_finale%>" name="pf">
 						<div class="metodi">
 							
 							<span class="text-muted">Seleziona il tuo metodo di pagamento</span>

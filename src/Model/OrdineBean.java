@@ -1,6 +1,7 @@
 package Model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OrdineBean {
@@ -11,13 +12,21 @@ public class OrdineBean {
 	int idOrdine;
 	Date data_ordine;
 	String stato_ordine;
-	HashMap<ProdottoBean, Integer> composizione = new HashMap<>();
+	HashMap<ProdottoBean, ArrayList<Double>> composizione = new HashMap<>();  // Posizione 0 ci mettiamo quantità, Posizione 1 ci mettiamo Iva, Posizione 2 ci mettiamo Prezzo
+	Double Prezzo_totale;
 	
 	
-	public HashMap<ProdottoBean, Integer> getComposizione() {
+	public Double getPrezzo_totale() {
+		return Prezzo_totale;
+	}
+	public void setPrezzo_totale(Double prezzo_totale) {
+		Prezzo_totale = prezzo_totale;
+	}
+	
+	public HashMap<ProdottoBean, ArrayList<Double>> getComposizione() {
 		return composizione;
 	}
-	public void setComposizione(HashMap<ProdottoBean, Integer> composizione) {
+	public void setComposizione(HashMap<ProdottoBean, ArrayList<Double>> composizione) {
 		this.composizione = composizione;
 	}
 	
