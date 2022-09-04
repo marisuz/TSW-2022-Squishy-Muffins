@@ -34,40 +34,44 @@
 			
 				<h1>Modifica prodotto</h1>
 				
-				<input type="hidden" name="id" value="<%= var.getCodprodotto()%>">
-				<input type="hidden" name="action" value="update">
+				<input class="box" type="hidden" name="id" value="<%= var.getCodprodotto()%>">
+				<input class="box" type="hidden" name="action" value="update">
 				
 				<div class="modify">
 					<p class="p_mod">Nome prodotto</p>
-					<input type="text" name="Nome" value="<%= var.getNome()%>">
+					<input class="box" type="text" name="Nome" value="<%= var.getNome()%>">
 				</div>		
 				
 				<div class="modify">
 					<p class="p_mod">Prezzo unitario</p>
-					<input type="number" name="Prezzo" value="<%= var.getPrezzo()%>">
+					<input  class="box" type="number" name="Prezzo" value="<%= var.getPrezzo()%>">
 				</div>
 				
 				<div class="modify">
 					<p class="p_mod">Descrizione</p>
-					<input type="text" name="Descrizione" value="<%= var.getDescrizione()%>">
+					<input class="box" type="text" name="Descrizione" value="<%= var.getDescrizione()%>">
 				</div>
 				
 				<div class="modify">
 					<p class="p_mod">Immagine</p>
 					<img src="<%= var.getImmagine()%>">
-					<input type="file" name="Immagine" >	
+					<input class="box" type="file" name="Immagine" >	
+				</div>
+				
+				<div class="modify">
+				<p class="p_mod">Quantità</p>
+				<input  class="box" type="number" name="Quantità" value="<%= var.getQuantita()%>">
 				</div>
 				
 				<div class="modify">
 					<p class="p_mod">Eliminare?</p>
-					<div style= "display:flex;"><input type="radio" name="Rimosso" value="1" <%if(var.getRimosso() == 1) out.println("checked"); %>> <p>Yes</p> </div>
-					<div style= "display:flex;"><input type="radio" name="Rimosso" value="0" <%if(var.getRimosso() == 0) out.println("checked"); %>> <p>No</p></div>
+					<div class="sino" style= "display:flex;"><input type="radio" name="Rimosso" value="1" <%if(var.getRimosso() == 1) out.println("checked"); %>> <p>Sì</p> </div>
+					<div class="sino" style= "display:flex;"><input type="radio" name="Rimosso" value="0" <%if(var.getRimosso() == 0) out.println("checked"); %>> <p>No</p></div>
 				</div>
 				
-				<div class="modify">
-					<input type="submit" value="Invio">
-					<input type="number" name="Quantità" value="<%= var.getQuantita()%>">
-				</div>
+				
+				
+				<input class ="Modifica" type="submit" value="Invia modifica">
 				
 			</div>
 		

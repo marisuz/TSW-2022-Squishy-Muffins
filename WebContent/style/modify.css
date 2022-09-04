@@ -6,8 +6,9 @@
 
 .modify{
 	display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 10px;
+    align-items:center;
 }
 
 h1{
@@ -31,10 +32,45 @@ h1{
      font-family: 'Rubik', sans-serif;
 }
 
-input{
+.Modifica{
+	text-decoration: none;
+	border: 1px solid #ffc1c1;
+	border-radius: 2em;
+	font-size: 1em;
+	color: black;
+	background-color: #ffc1c1;
+	font-weight: normal;
+	text-align:center;
+	width: 40%;
+	padding: 10px;
+    margin: 2px;
+    justify-content:space-around;
+    width:50%%;
+}
+
+a:hover{
+	color:white;
+	text-decoration:none;
+}
+
+.Modifica:hover {
+	color:black;
+	font-color:white;
+	background-color:lightblue;
+	transition:0.3s;
+	cursor: pointer;
+	border: lightblue;
+}
+
+.box{
 	border-radius:20px;
 	padding: 15px;
 	border: 2px solid #ffc1c1;
+	text-align:right;
+}
+
+input.box[type="number"] {
+    text-align: right;
 }
 
 
@@ -45,4 +81,26 @@ input{
 	align-content:center;
 	align-items:center;
 	padding: 20px;
+}
+
+@media (max-width: 800px){
+	.modify_form {
+  		max-width:100%;
+	}
+	.modify_form{
+	max-width:100%;
+	}
+	.modify{
+	max-width:100%;
+	display:block;
+	align-items:center;
+	}
+	.Modifica{
+	max-width:100%;
+	}
+	input{
+	max-width:100%;
+	}
+	.sino{
+	justify-content:center;}
 }
