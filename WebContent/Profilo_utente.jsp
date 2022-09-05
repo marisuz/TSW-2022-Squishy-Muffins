@@ -11,6 +11,16 @@
     		
     	<% }  %>
     
+    	<% 
+    	ArrayList<OrdineBean> arr = (ArrayList<OrdineBean>) request.getAttribute("ordini");	
+    	if(arr == null){
+    		response.sendRedirect("Mostra_ordini_utente?action=mostra");
+    		return;
+    	}
+    	%>
+    
+    
+    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -158,6 +168,45 @@
 				</div>
 				
 			<% } %>
+			
+			<div class="tabella"> 
+			<table class="tab">
+				<tr> <!--  INTESTAZIONE TABELLA  -->
+					<th>ID ordine </th>
+					<th>Data ordine </th>
+					<th>Stato ordine</th>
+					<th>Nome/Cognome utente </th>
+					<th>Metodo di pagamento </th>
+					<th>Totale</th>
+					<th>Ordine</th>
+					<th>Fattura</th>
+					
+				</tr>
+			<%for(OrdineBean bean : arr){ %>
+				<tr> <!-- CONTENUTO TABELLA -->
+					<td> <%= bean.getIdOrdine() %></td>
+					<td> <%= bean.getData_ordine() %></td>
+					<td> <%= bean.getStato_ordine() %></td>
+					<td> <%= bean.getCodUtente().getEmail() %></td>
+					<td> <%= bean.getCodPagamento().getCodice_carta() %></td>
+					<td> <%= String.format("%.02f", bean.getPrezzo_totale()) %> &euro; </td>
+					<td> <% for(ProdottoBean pbean : bean.getComposizione().keySet()){%>
+						
+						<img src="<%= pbean.getImmagine().getPath() %>">
+						
+					<%}%></td>
+				</tr>
+				
+				<tr>
+					<form action="Fattura" method="post">
+						<input type="hidden" name="ordine" value="<%= bean.getIdOrdine()%>">
+						<input type="submit" value="Fattura">
+					</form>
+				</tr>
+				<%} %>
+			</table>
+ 		</div> 
+			
 	
 		<br><br>
 		<jsp:include page="footer.jsp" />
