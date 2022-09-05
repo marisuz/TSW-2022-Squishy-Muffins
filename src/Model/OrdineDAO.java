@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -198,7 +199,7 @@ public class OrdineDAO {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Collection<OrdineBean> order = new LinkedList<OrdineBean>();
+		Collection<OrdineBean> order = new ArrayList<OrdineBean>();
 		
 		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME;
 		

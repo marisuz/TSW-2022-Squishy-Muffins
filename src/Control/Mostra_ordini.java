@@ -2,6 +2,7 @@ package Control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javax.servlet.RequestDispatcher;
@@ -35,15 +36,15 @@ public class Mostra_ordini extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		OrdineDAO odao = new OrdineDAO();
-		LinkedList<OrdineBean> var = null;  
+		ArrayList<OrdineBean> var = null;  
 		String action = request.getParameter("action");
 		
 		if(action.equals("mostra")) {
 			try {
-				var = (LinkedList<OrdineBean>) odao.doRetrieveAll(null);
+				var = (ArrayList<OrdineBean>) odao.doRetrieveAll(null);
 				System.out.println(var);
 				request.setAttribute("ordini", var);
-				RequestDispatcher rs = request.getRequestDispatcher("Ordine.jsp");
+				RequestDispatcher rs = request.getRequestDispatcher("profilo_admin.jsp");
 				rs.include(request, response);
 				
 			} catch (SQLException e) {
@@ -53,10 +54,10 @@ public class Mostra_ordini extends HttpServlet {
 		else if(action.equals("data")) {
 			
 			try {
-				var = (LinkedList<OrdineBean>) odao.doRetrieveAll("data_ordine");
+				var = (ArrayList<OrdineBean>) odao.doRetrieveAll("data_ordine");
 				System.out.println(var);
 				request.setAttribute("ordini", var);
-				RequestDispatcher rs = request.getRequestDispatcher("Ordine.jsp");
+				RequestDispatcher rs = request.getRequestDispatcher("profilo_admin.jsp");
 				rs.include(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -67,10 +68,10 @@ public class Mostra_ordini extends HttpServlet {
 		}else if(action.equals("utente")) {
 			
 			try {
-				var = (LinkedList<OrdineBean>) odao.doRetrieveAll("cod_utente");
+				var = (ArrayList<OrdineBean>) odao.doRetrieveAll("cod_utente");
 				System.out.println(var);
 				request.setAttribute("ordini", var);
-				RequestDispatcher rs = request.getRequestDispatcher("Ordine.jsp");
+				RequestDispatcher rs = request.getRequestDispatcher("profilo_admin.jsp");
 				rs.include(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();

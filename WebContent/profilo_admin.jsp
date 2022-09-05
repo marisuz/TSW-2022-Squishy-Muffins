@@ -104,13 +104,15 @@
 		
 		<div class="spazio_bottoni">
 			<div class="admin_action">
-				<form action ="#" method="get">
+				<form action ="Mostra_ordini" method="get">
+					<input type="hidden" value="utente" name="action">
 					<input type="submit" class="admin_button" value="Visualizza per cliente">
 				</form>		
 			</div>
 			
 			<div class="admin_action">
-				<form action ="#" method="get">
+				<form action ="Mostra_ordini" method="get">
+					<input type="hidden" value="data" name="action">
 					<input type="submit" class="admin_button" value="Visualizza per data">
 				</form>	
 			</div>		
@@ -134,9 +136,9 @@
 					<td> <%= bean.getIdOrdine() %></td>
 					<td> <%= bean.getData_ordine() %></td>
 					<td> <%= bean.getStato_ordine() %></td>
-					<td> <%= bean.getCodUtente() %></td>
-					<td> <%= bean.getCodPagamento() %></td>
-					<td> <%= bean.getPrezzo_totale() %></td>
+					<td> <%= bean.getCodUtente().getEmail() %></td>
+					<td> <%= bean.getCodPagamento().getCodice_carta() %></td>
+					<td> <%= String.format("%.02f", bean.getPrezzo_totale()) %> &euro; </td>
 					<td> <% for(ProdottoBean pbean : bean.getComposizione().keySet()){%>
 						
 						<img src="<%= pbean.getImmagine().getPath() %>">
