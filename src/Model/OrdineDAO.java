@@ -262,7 +262,70 @@ public class OrdineDAO {
 		
 	}
 	
-	
+public synchronized Collection<OrdineBean> doRetrieveAllByUtente(String var) throws SQLException {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<OrdineBean> order = new ArrayList<OrdineBean>();
+		
+		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + "WHERE cod_utente = ?";
+		
+		
+		try 
+		{
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, var);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) 
+			{
+				OrdineBean bean = new OrdineBean();
+
+				bean.setIdOrdine(rs.getInt("id_ordine"));
+				bean.setData_ordine(rs.getDate("data_ordine"));
+				bean.setStato_ordine(rs.getString("stato_ordine"));
+				bean.setPrezzo_totale(rs.getDouble("prezzo_totale"));
+				
+				ConsegnaDAO cdao = new ConsegnaDAO();
+				ConsegnaBean cbean = cdao.doRetrieveByKey(rs.getInt("cod_consegna"));
+				bean.setCodConsegna(cbean);
+				
+				PagamentoDAO pdao = new PagamentoDAO();
+				PagamentoBean pbean = pdao.doRetrieveByKey(rs.getInt("cod_pagamento"));
+				bean.setCodPagamento(pbean);
+				
+				UtenteDAO udao = new UtenteDAO();
+				UtenteBean ubean = udao.doRetrieveByKey(rs.getString("cod_utente"));
+				bean.setCodUtente(ubean);
+				
+				ComposizioneDAO codao = new ComposizioneDAO();
+				bean.setComposizione(codao.doRetrieveByOrdine(rs.getInt("id_ordine")));
+				
+				order.add(bean);
+			}
+
+		} 
+		finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return order;
+		
+		
+		
+		
+	}
 	
 	
 }
