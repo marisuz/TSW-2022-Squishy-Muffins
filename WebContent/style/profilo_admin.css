@@ -40,16 +40,18 @@
 
 
 table {
-  border-collapse: collapse;
-  width: 90%;
-  border: 1px solid black;
-  table-layout: fixed;
+   border-collapse: collapse;
+   table-layout: fixed;
+   width:100%;
+   height:100%;
 }
 
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  font-size:1.3em;
+  
 }
 
 tr:nth-child(even) {
@@ -218,11 +220,21 @@ div#prova {
 
 .tabella{
 	display:flex;
+ 	justify-content:center; 
+ 	   overflow-x:auto;
+}  
+
+.tab{
+	width:100%;
+	display:flex;
+	height:auto;
 	justify-content:center;
-} 
+}
 
-
-
+.images{
+	width: 60px;
+	height: 60px;
+}
 
 
 

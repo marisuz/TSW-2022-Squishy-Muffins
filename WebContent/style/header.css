@@ -77,14 +77,19 @@ header {
 	border: 1px solid #2f2f2f;
 }
 
-#prova1{
+#prova1{ /* DIV CON L'INPUT E L'SVG */
 	display:flex;
 	align-items: center;
 }
 
-#ricerca{
-	display:flex; 
-	flex-direction:column; 
+.leo{  /* DIV RICERCA */
+/* 	display:flex; 
+	flex-direction:column;  */
+ 	width: 230px;
+    position:absolute; 
+    margin-top:70px;
+    z-index: 10000;
+	
 }
 
 @media(max-width:800px) {

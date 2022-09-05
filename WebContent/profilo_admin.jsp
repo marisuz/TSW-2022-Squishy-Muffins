@@ -140,10 +140,7 @@
 					<td> <%= bean.getCodPagamento().getCodice_carta() %></td>
 					<td> <%= String.format("%.02f", bean.getPrezzo_totale()) %> &euro; </td>
 					<td> <% for(ProdottoBean pbean : bean.getComposizione().keySet()){%>
-						
-						<img src="<%= pbean.getImmagine().getPath() %>">
-						
-					<%}%></td>
+						<img class="images" src="<%= pbean.getImmagine().getPath() %>"> <%}%></td>
 				</tr>
 				<%} %>
 			</table>

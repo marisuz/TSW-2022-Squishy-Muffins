@@ -55,7 +55,7 @@
 		    			<li class="list-group-item d-flex justify-content-between lh-condensed">
 		                    <div style="display:flex">
 		                        <div>	
-		                        	<h6 class="my-0"><%=obj.get(var) + "x " + var.getNome()%></h6>
+		                        	<h6 class="my-0"><%=obj.get(var).get(0) + "x " + var.getNome()%></h6>
 		                    	</div>
 		                    </div>
 		                    <span class="text-muted"><%= String.format("%.02f",Prezzo_totale)%> &euro;</span>

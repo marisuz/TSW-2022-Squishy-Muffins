@@ -44,29 +44,31 @@
 	
 		<jsp:include page="footer.jsp"/>
 	
-	<!-- <script>
-       $('#loginForm').on('submit', function(e){
-    	   e.preventDefault();
+		<script>
+		
+			/* funzione che controlla l'esistenza dell'utente */
+/* 		       $('#loginForm').on('submit', function(e){
+		    	   e.preventDefault();
+		
+		          $.ajax({
+		        	  type: "POST",
+		              url:"LoginServlet",
+		              data: $("#loginForm").serialize(),
+		              cache: false,
+		              success: function (data) {
+		                 if(data.substring(0, 4)=='True'){
+		                   let redirectPage = data.replace('True', '');
+		                   $(location).attr('href', redirectPage);
+		                 }else{
+		                     var el = document.getElementById("loginErr");
+		                     el.innerHTML = "Errore! Utente o password non corretti! Riprovare!"
+		                 }
+		              }
+		          });
+		         return;
+		       }); */
+   		</script>
 
-          $.ajax({
-        	  type: "POST",
-              url:"LoginServlet",
-              data: $("#loginForm").serialize(),
-              cache: false,
-              success: function (data) {
-                 if(data.substring(0, 4)=='True'){
-                   let redirectPage = data.replace('True', '');
-                   $(location).attr('href', redirectPage);
-                 }else{
-                     var el = document.getElementById("loginErr");
-                     el.innerHTML = "Errore! Utente o password non corretti! Riprovare!"
-                 }
-              }
-          });
-         return;
-       });
-   </script>
-	 -->
 	</body>
 
 </html>

@@ -88,6 +88,16 @@
 	
 		<jsp:include page="footer.jsp" />
 		
+<!-- 		<script>
+			$(".imgProdotto").mouseover(function(){
+				$(this).css("color","black")
+				
+				
+				
+			})
+		
+		
+		</script> -->
 	</body>
 
 </html>
