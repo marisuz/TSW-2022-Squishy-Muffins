@@ -115,9 +115,9 @@ public class Fattura extends HttpServlet {
         float twoColumnWidth[] = {twocol150, twocol};
         float threeColumnWidth[] = {threecol, threecol, threecol};
         float fullWidth[] = {threecol * 3};
-        com.itextpdf.kernel.colors.Color verdePistacchio = new DeviceRgb(172, 216, 114 );
+        com.itextpdf.kernel.colors.Color rosaSito = new DeviceRgb(255, 193, 193 );
         com.itextpdf.kernel.colors.Color rosaLogo = new DeviceRgb(242, 125, 164);
-        Color verdeScuro = new DeviceRgb(141, 184, 85);
+        Color lightBlue = new DeviceRgb(173, 216, 230);
 
         //il costruttore della tabella prende in input l'array di float
         Table headerTable = new Table(threeColumnWidth2);
@@ -136,8 +136,8 @@ public class Fattura extends HttpServlet {
         //descrizione fattura
         Table descrizione = new Table(twoColumnWidth);
         descrizione.setMarginTop((float) 10.0);
-        descrizione.addCell(new Cell().add(new Paragraph(("Fattura")).setBold().setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(verdePistacchio));
-        descrizione.addCell(new Cell().add(new Paragraph(("Destinatario")).setTextAlignment(TextAlignment.CENTER)).setBold().setBackgroundColor(verdePistacchio));
+        descrizione.addCell(new Cell().add(new Paragraph(("Fattura")).setBold().setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(rosaSito));
+        descrizione.addCell(new Cell().add(new Paragraph(("Destinatario")).setTextAlignment(TextAlignment.CENTER)).setBold().setBackgroundColor(rosaSito));
         descrizione.addCell(new Cell().add(new Paragraph("Fattura numero: "+bean.getIdOrdine()+"\nData: "+bean.getData_ordine()).setMarginLeft(2).setMarginTop(1)));
         descrizione.addCell(new Cell().add(new Paragraph("Spettabile "+ bean.getCodUtente().getNome() + " " + bean.getCodUtente().getCognome()+"\n"+bean.getCodUtente().getCodice_fiscale()).setMarginLeft(2).setMarginTop(1)));
         document.add(descrizione);
@@ -150,9 +150,9 @@ public class Fattura extends HttpServlet {
         Table prodotti = new Table(threeColumnWidth);
         prodotti.setMarginTop(10);
         //intestazione tabella prodotti
-        prodotti.addCell(new Cell().add(new Paragraph(("Prodotto")).setBold().setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(verdePistacchio));
-        prodotti.addCell(new Cell().add(new Paragraph(("Quantità ")).setBold().setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(verdePistacchio));
-        prodotti.addCell(new Cell().add(new Paragraph(("Costo")).setBold().setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(verdePistacchio));
+        prodotti.addCell(new Cell().add(new Paragraph(("Prodotto")).setBold().setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(rosaSito));
+        prodotti.addCell(new Cell().add(new Paragraph(("Quantità ")).setBold().setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(rosaSito));
+        prodotti.addCell(new Cell().add(new Paragraph(("Costo")).setBold().setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(rosaSito));
 
         //nella posizione 0 della lista ci sta qt, pos 1 iva e pos 3 della lista c'Ã¨ prezzo
         for(ProdottoBean p : bean.getComposizione().keySet()) {
@@ -176,17 +176,17 @@ public class Fattura extends HttpServlet {
         Table dettagliFiscali = new Table(twoColumnWidth);
         dettagliFiscali.setMarginTop(10);
 
-        dettagliFiscali.addCell(new Cell().add(new Paragraph(("Metodo Pagamento")).setBold().setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(verdePistacchio));
-        dettagliFiscali.addCell(new Cell().add(new Paragraph(("Costo Totale")).setBold().setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(verdePistacchio));
+        dettagliFiscali.addCell(new Cell().add(new Paragraph(("Metodo Pagamento")).setBold().setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(rosaSito));
+        dettagliFiscali.addCell(new Cell().add(new Paragraph(("Costo Totale")).setBold().setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(rosaSito));
         
 
         	dettagliFiscali.addCell(new Cell().add(new Paragraph("Mastercard").setMarginLeft(2).setMarginTop(1)));
-        	dettagliFiscali.addCell(new Cell().add(new Paragraph("Imponibile: € "+imponibile+"\nSpedizione: € 0,00\nSconto: € 0,00\nIVA: 22%\n").setMarginLeft(2).setMarginTop(1)));
+        	dettagliFiscali.addCell(new Cell().add(new Paragraph("Imponibile: € "+imponibile+"\nSpedizione: € 5,00\nSconto: € 0,00\nIVA: 22%\n").setMarginLeft(2).setMarginTop(1)));
         	document.add(dettagliFiscali);
  
 
         Table totale = new Table(fullWidth);
-        totale.addCell(new Cell().add(new Paragraph("Totale: € "+bean.getPrezzo_totale()).setBold().setFontSize(16).setTextAlignment(TextAlignment.RIGHT).setMarginRight(25)).setBackgroundColor(verdeScuro));
+        totale.addCell(new Cell().add(new Paragraph("Totale: € "+bean.getPrezzo_totale()).setBold().setFontSize(16).setTextAlignment(TextAlignment.RIGHT).setMarginRight(25)).setBackgroundColor(lightBlue));
         document.add(totale);
         //note
         Table note = new Table(fullWidth);
