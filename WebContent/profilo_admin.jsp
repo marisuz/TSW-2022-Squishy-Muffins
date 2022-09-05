@@ -12,7 +12,7 @@
 		<jsp:forward page="Catalog.jsp" />
 		
 	<% } 
-    	ArrayList<OrdineBean> arr = request.getAttribute("ordini");	
+    	ArrayList<OrdineBean> arr = (ArrayList<OrdineBean>) request.getAttribute("ordini");	
     	if(arr == null){
     		response.sendRedirect("Mostra_ordini?action=mostra");
     		return;
@@ -136,12 +136,12 @@
 					<td> <%= bean.getStato_ordine() %></td>
 					<td> <%= bean.getCodUtente() %></td>
 					<td> <%= bean.getCodPagamento() %></td>
-					<td> <%= bean.get %></td>
-					<td> <% for(){
+					<td> <%= bean.getPrezzo_totale() %></td>
+					<td> <% for(ProdottoBean pbean : bean.getComposizione().keySet()){%>
 						
+						<img src="<%= pbean.getImmagine().getPath() %>">
 						
-						
-					}%></td>
+					<%}%></td>
 				</tr>
 				<%} %>
 			</table>
