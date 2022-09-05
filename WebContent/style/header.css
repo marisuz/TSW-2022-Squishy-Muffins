@@ -63,9 +63,28 @@ header {
 	text-align:center;
 }
 
-#ricerca{
+.titolo-ricerca{
+	  font-family: "archia-regular";
+	  font-size: 1.2rem;
+	  margin-left:10px;
+}
+
+.immagine-ricerca{
+	margin-left:10px;
+	width: 50px;
+	background-color: #fcefd4;
+	height: 50px;
+	border: 1px solid #2f2f2f;
+}
+
+#prova1{
 	display:flex;
 	align-items: center;
+}
+
+#ricerca{
+	display:flex; 
+	flex-direction:column; 
 }
 
 @media(max-width:800px) {

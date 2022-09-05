@@ -18,17 +18,15 @@
 	        </div>
 	
 	        <div class="link">
-		        	
 					<div id="prova1" class="ricerca">
-						<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-						</svg>  
-						<input class="search" type="text" id="search">
-						<div id="ricerca" ></div>
+						 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+						 </svg>
+						<input class="search" type="text" id="search">	 
 					</div>
-					
+					 <div id="ricerca" ></div>
+ 					 
 				
 		        <a href="Catalog.jsp">Catalogo</a>
-		            
 		        <a href="Profilo_utente.jsp">
 		            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"> <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/> <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
 					</svg>
@@ -105,7 +103,7 @@
 		    		data.forEach(e => {
 		    			
 		    			var myvar=  '<a href="Catalogo?action=view&id='+e.codprodotto+'">'+
-	                    			'<div style="border:1px solid brown; width:200px; background-color:#fcefd4; right: 50px; z-index:"999999999"; visibility:visible;>'+
+	                    			'<div style=" border:1px solid lightblue; width:200px; background-color:lightblue; right: 50px; z-index:"9999";>'+
 	                    			'<h2 class="titolo-ricerca">'+e.Nome+'</h2></a>'
 	                    			+ '<a href="Catalogo?action=view&id='+e.codprodotto+'"><img class="immagine-ricerca" src="'+ e.Immagine.path +'">'+
 	                        		'</a></div>';
