@@ -92,6 +92,11 @@ header {
 	
 }
 
+/* .blur{
+	 filter: blur(5px);
+	 z-index: -1;
+} */
+
 @media(max-width:800px) {
     .hamburger {
         display: block;

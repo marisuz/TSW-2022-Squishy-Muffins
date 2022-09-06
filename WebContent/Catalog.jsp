@@ -91,13 +91,8 @@
 <!-- 		<script>
 			$(".imgProdotto").mouseover(function(){
 				$(this).css("color","black")
-				
-				
-				
 			})
-		
-		
-		</script> -->
+		</script>  -->
 	</body>
 
 </html>

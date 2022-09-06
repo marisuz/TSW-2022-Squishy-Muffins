@@ -157,6 +157,66 @@ div#prova {
     margin-top:5px;
 }
 
+table {
+   border-collapse: collapse;
+   table-layout: fixed;
+   width:100%;
+   height:100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-size:1.3em;
+  
+}
+
+tr:nth-child(even) {
+  background-color: lightblue;
+}
+
+.tabella{
+	display:flex;
+ 	justify-content:center; 
+ 	overflow-x:auto;
+}  
+
+.tab{
+	width:90%;
+	display:flex;
+	height:auto;
+	justify-content:center;
+}
+
+.images{
+	width: 60px;
+	height: 60px;
+}
+
+.fattura{
+	text-decoration: none;
+	border: 1px solid #ffc1c1;
+	border-radius: 2em;
+	font-size: 0.7em;
+	color: black;
+	background-color: #ffc1c1;
+	font-weight: bold;
+	text-align:center;
+	width: 100%;
+	padding: 10px;
+    margin: 2px;
+    justify-content:space-around;
+}
+
+.fattura:hover {
+	color:black;
+	font-color:white;
+	transition:0.3s;
+	cursor: pointer;
+	    transform: scale(1.1);
+    transition: .3s;
+} 
 
 
 

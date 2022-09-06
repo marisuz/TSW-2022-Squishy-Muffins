@@ -94,7 +94,7 @@ public synchronized void doUpdate (UtenteBean var, String vecchia_mail) throws S
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		UtenteBean bean = new UtenteBean();
+		UtenteBean bean = null;
 		PagamentoDAO pdao = new PagamentoDAO();
 		ConsegnaDAO cdao = new ConsegnaDAO();
 
@@ -110,6 +110,7 @@ public synchronized void doUpdate (UtenteBean var, String vecchia_mail) throws S
 
 			while (rs.next()) 
 			{
+				bean = new UtenteBean();
 				bean.setPagamento(pdao.doRetrieveByUtente(rs.getString("email")));
 				bean.setConsegna(cdao.doRetrieveByUtente(rs.getString("email")));
 				bean.setEmail(rs.getString("email"));

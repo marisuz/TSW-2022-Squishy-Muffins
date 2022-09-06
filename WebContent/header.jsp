@@ -125,7 +125,13 @@
 		})
 		
 		
-		
+/*  Funzione per blurrare dopo che si preme sul cerca 
+ 	per essere usata, bisogna aggiungere onkeyup="blurra()" sull'input
+ 
+			function blurra() {
+            document.querySelectorAll("body >:not(.leo)")
+                .forEach(a => a.classList.toggle("blur"))
+        } */
 
 	    
 	    

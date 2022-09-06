@@ -125,7 +125,7 @@
 	 	        
 
 	 	        var check_field;
-	 	        var error_message = "Si � verificato un errore: "; //testo di errore
+	 	        var error_message = "Si è verificato un errore: "; //testo di errore
 	 	        var errors_exist = 0;
 
 	 	        for (var i = 0; i < fields_to_check.length; i++) {
@@ -162,7 +162,7 @@
 		 	       }
 
 		 	        if(!validateEmail(document.forms["registerForm"][fields_to_check[0]].value)){
-		 	        	error_message += "<br/>La mail non � valida"; //Se la mail non  valida
+		 	        	error_message += "<br/>La mail non è valida"; //Se la mail non  valida
 		            	errors_exist += 1;
 		 	        }
 	 	       }

@@ -169,6 +169,7 @@
 				
 			<% } %>
 			
+			
 			<div class="tabella"> 
 			<table class="tab">
 				<tr> <!--  INTESTAZIONE TABELLA  -->
@@ -190,19 +191,19 @@
 					<td> <%= bean.getCodUtente().getEmail() %></td>
 					<td> <%= bean.getCodPagamento().getCodice_carta() %></td>
 					<td> <%= String.format("%.02f", bean.getPrezzo_totale()) %> &euro; </td>
+					<td>
+						<form action="Fattura" method="post">
+							<input type="hidden" name="ordine" value="<%= bean.getIdOrdine()%>">
+							<input type="submit" value="Fattura" class="fattura">
+						</form>
+					</td>
 					<td> <% for(ProdottoBean pbean : bean.getComposizione().keySet()){%>
-						
-						<img src="<%= pbean.getImmagine().getPath() %>">
-						
-					<%}%></td>
+						<img class ="images" src="<%= pbean.getImmagine().getPath() %>">	
+						<%}%>
+					</td>
+					
 				</tr>
 				
-				<tr>
-					<form action="Fattura" method="post">
-						<input type="hidden" name="ordine" value="<%= bean.getIdOrdine()%>">
-						<input type="submit" value="Fattura">
-					</form>
-				</tr>
 				<%} %>
 			</table>
  		</div> 

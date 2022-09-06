@@ -28,9 +28,11 @@
 	        <div class="content">
 	            <div class="input-field">
 	                <input type="text" placeholder="Username" id="username" name="username">
+	                   	<p class="error_message"></p>
 	            </div>
 	            <div class="input-field">
 	                <input type="password" placeholder="Password" id="password" name="password">
+	                   	<p class="error_message2"></p>
 	            </div>
 	        </div>
 	        
@@ -47,26 +49,34 @@
 		<script>
 		
 			/* funzione che controlla l'esistenza dell'utente */
-/* 		       $('#loginForm').on('submit', function(e){
-		    	   e.preventDefault();
+		       $('#loginButton').click (function(e){
+		  /*   	   e.preventDefault(); */
 		
 		          $.ajax({
 		        	  type: "POST",
 		              url:"LoginServlet",
-		              data: $("#loginForm").serialize(),
+		              data : {
+			    			username : $("#username").val(), 
+			    			password : $("password").val()
+			    		},
 		              cache: false,
-		              success: function (data) {
-		                 if(data.substring(0, 4)=='True'){
-		                   let redirectPage = data.replace('True', '');
-		                   $(location).attr('href', redirectPage);
-		                 }else{
-		                     var el = document.getElementById("loginErr");
-		                     el.innerHTML = "Errore! Utente o password non corretti! Riprovare!"
-		                 }
+		              success: function (data){
+		            	  risposta(data)
+
 		              }
 		          });
 		         return;
-		       }); */
+		       }); 
+			
+			
+			/*risposta */
+			function risposta(data){
+				if (data === "Email no DB"){
+					$(".error_message").html("L'username non è valido");
+					$(".error_message").css("color", "red");
+					
+				}
+			}
    		</script>
 
 	</body>
