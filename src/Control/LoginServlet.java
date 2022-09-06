@@ -50,23 +50,27 @@ public class LoginServlet extends HttpServlet {
 		UtenteDAO users = new UtenteDAO();
 		UtenteBean variabile = new UtenteBean();
 		
+		System.out.println(password + "ciao");
+		
 		try {
 			variabile = users.doRetrieveByKey(username);
 			if (variabile == null) {
 				String risposta = "Email no DB";
-				response.getWriter().print(gson.toJson(new ResponseStatusMessage(200, risposta)));
+				response.getWriter().print(gson.toJson(risposta, String.class));
+				System.out.println(risposta);
 				response.getWriter().flush();
 				response.setStatus(200);
 				return;
-			} else if(variabile != null && !variabile.getPassword().equals(password)){
+			} else if(variabile != null && variabile.getPassword().compareTo(password) != 0){
 				String risposta = "Password no";
-				response.getWriter().print(gson.toJson(new ResponseStatusMessage(200, risposta)));
+				response.getWriter().print(gson.toJson(risposta, String.class));
 				response.getWriter().flush();
 				response.setStatus(200);
 				return;
 			} else {
 				String risposta = "email e psw si";
-				response.getWriter().print(gson.toJson(new ResponseStatusMessage(200, risposta)));
+				response.getWriter().print(gson.toJson(risposta, String.class));
+				System.out.println(risposta);
 				response.getWriter().flush();
 				response.setStatus(200);
 				return;
@@ -75,7 +79,7 @@ public class LoginServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			response.setStatus(500);
-			response.getWriter().print(gson.toJson(new ResponseStatusMessage(500, "error")));
+			response.getWriter().print(gson.toJson("error", String.class));
 			response.getWriter().flush();
 			return;
 		}	

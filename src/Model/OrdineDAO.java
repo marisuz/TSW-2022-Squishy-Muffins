@@ -269,7 +269,7 @@ public synchronized Collection<OrdineBean> doRetrieveAllByUtente(String var) thr
 
 		Collection<OrdineBean> order = new ArrayList<OrdineBean>();
 		
-		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + "WHERE cod_utente = ?";
+		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE cod_utente = ?";
 		
 		
 		try 

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Model.OrdineBean;
 import Model.OrdineDAO;
+import Model.UtenteBean;
 
 /**
  * Servlet implementation class Mostra_ordini_utente
@@ -35,12 +36,14 @@ public class Mostra_ordini_utente extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 		OrdineDAO odao = new OrdineDAO();
+		UtenteBean ubean = new UtenteBean();
 		ArrayList<OrdineBean> var = null;  
 		String action = request.getParameter("action");
 		
 		if(action.equals("mostra")) {
 			try {
-				var = (ArrayList<OrdineBean>) odao.doRetrieveAll(null);
+				ubean = (UtenteBean)request.getSession().getAttribute("Utente loggato");
+				var = (ArrayList<OrdineBean>) odao.doRetrieveAllByUtente(ubean.getEmail());
 				System.out.println(var);
 				request.setAttribute("ordini", var);
 				RequestDispatcher rs = request.getRequestDispatcher("Profilo_utente.jsp");

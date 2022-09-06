@@ -40,7 +40,7 @@
 
 	        <div class="action">
 	            <a href="register.jsp">Registrati</a>
-	            <button id="loginButton">Login</button>
+	            <button type="submit" id="loginButton">Login</button>
 	        </div>
 	    </form>
 	
@@ -49,34 +49,47 @@
 		<script>
 		
 			/* funzione che controlla l'esistenza dell'utente */
-		       $('#loginButton').click (function(e){
-		  /*   	   e.preventDefault(); */
-		
-		          $.ajax({
-		        	  type: "POST",
-		              url:"LoginServlet",
-		              data : {
-			    			username : $("#username").val(), 
-			    			password : $("password").val()
-			    		},
-		              cache: false,
-		              success: function (data){
-		            	  risposta(data)
-
-		              }
-		          });
+		       $('#loginButton').click(function(event){
+		    	   event.preventDefault();
+		    	   const risposta = check(event);
 		         return;
 		       }); 
 			
 			
-			/*risposta */
-			function risposta(data){
-				if (data === "Email no DB"){
-					$(".error_message").html("L'username non è valido");
-					$(".error_message").css("color", "red");
-					
-				}
+			/*risposta */		
+			function check(event){
+				
+				return $.ajax({
+		        	  type: "POST",
+		              url:"LoginServlet",
+		              data : {
+			    			username : $("#username").val(), 
+			    			password : $("#password").val()
+			    		},
+		              cache: false,
+		              success: function (data){
+		            	  
+							if (data == "Email no DB"){
+								
+								$(".error_message").html("L'username non è valido");
+								$(".error_message").css("color", "red");
+								
+							}else if(data == "email e psw si"){
+								
+								$("#loginForm").submit();
+							}else if(data == "Password no"){
+								
+								$(".error_message2").html("La password non è valida");
+								$(".error_message2").css("color", "red");
+								
+							}
+
+		              }
+		          });
+	
+				
 			}
+			
    		</script>
 
 	</body>
