@@ -35,7 +35,7 @@ public class PagamentoDAO {
 			
 			
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, user.getIdpagamento());
+			preparedStatement.setInt(1, CID);
 			preparedStatement.setString(2, user.getNominativo());
 			preparedStatement.setInt(3, user.getCVV());
 			preparedStatement.setInt(4, user.getMeseScadenza());
