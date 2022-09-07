@@ -208,7 +208,12 @@ a:not(.cons) {
 		margin-top: 15px;
 		margin-left: 10%;
 	}
-
+	
+	.item_descr_pagina{
+		display: flex;
+		justify-content: center;
+		background: transparent
+	}
 }
 
 @media all and ( max-width : 720px) {
@@ -287,6 +292,12 @@ a:not(.cons) {
 		justify-content: center;
 		text-align: center;
 		margin-top: 30px;
+	}
+	
+	.item_descr_pagina{
+		display: flex;
+		justify-content: center;
+		background: transparent
 	}
 	
 } 
@@ -369,5 +380,11 @@ a:not(.cons) {
 		text-align: center;
 		margin-top: 30px;
 	}
+	
+		.item_descr_pagina{
+		display: flex;
+		justify-content: center;
+		background: transparent
+	}S
 
 }
