@@ -24,7 +24,7 @@
 	                        <h3>Services</h3>
 	                        <ul>
 	                            <li><a href="#">Privacy Policy</a></li>
-	                            <li><a href="#">Terms & Conditions</a></li>
+	                            <li><a href="./errror404.jsp">Terms & Conditions</a></li>
 	                        </ul>
 	                    </div>
 	                    <div class="col-sm-6 col-md-3 item">
