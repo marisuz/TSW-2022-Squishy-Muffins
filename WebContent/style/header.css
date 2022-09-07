@@ -134,4 +134,10 @@ header {
         left: 0;
         padding-left: 0;
     }
+    
+    #prova1{
+    	display:flex;
+    	justify-content:center;
+    	align-items:center;
+    	}
 }
