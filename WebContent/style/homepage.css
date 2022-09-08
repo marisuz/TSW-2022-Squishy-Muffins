@@ -49,6 +49,7 @@ a{
   animation-name: entraTesto;
   color: white;
   font-family: ubuntu;
+  text-shadow: 0 0 15px #000;
 }
 
 .parteFinaleHome{
@@ -69,7 +70,7 @@ a{
 	border-radius: 17px;
 	cursor:pointer;
 	text-align:center;
-}
+} 
 
 .uname{
 	text-decoration: none;
@@ -85,6 +86,7 @@ a{
     margin: 2px;
     justify-content:space-around;
     width:30%%;
+
 }
 
 .uname:hover {
@@ -149,6 +151,7 @@ a{
 	
 .spanHome{
   font-size: 5rem;
+  text-shadow: 0 0 15px #000;
 }
 
 .center{

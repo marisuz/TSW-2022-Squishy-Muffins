@@ -218,6 +218,16 @@ tr:nth-child(even) {
     transition: .3s;
 } 
 
+.error_box{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	font-weight:bold;
+	font-size:1.6em;
+	
+}
+
 
 
 @media(max-width:1000px){

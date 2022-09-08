@@ -156,7 +156,7 @@ public class Fattura extends HttpServlet {
 
         //nella posizione 0 della lista ci sta qt, pos 1 iva e pos 3 della lista c'Ã¨ prezzo
         for(ProdottoBean p : bean.getComposizione().keySet()) {
-        	imponibile += bean.getComposizione().get(p).get(2);
+        	imponibile += bean.getComposizione().get(p).get(2) * bean.getComposizione().get(p).get(0);
             prodotti.addCell(new Cell().add(new Paragraph(p.getNome()).setMarginLeft(2).setMarginTop(1)));
             prodotti.addCell(new Cell().add(new Paragraph(String.valueOf(bean.getComposizione().get(p).get(0).intValue())).setMarginLeft(2).setMarginTop(1)));
             prodotti.addCell(new Cell().add(new Paragraph("€" + String.valueOf(bean.getComposizione().get(p).get(2).floatValue())).setMarginLeft(2).setMarginTop(1)));
@@ -186,7 +186,7 @@ public class Fattura extends HttpServlet {
  
 
         Table totale = new Table(fullWidth);
-        totale.addCell(new Cell().add(new Paragraph("Totale: € "+bean.getPrezzo_totale()).setBold().setFontSize(16).setTextAlignment(TextAlignment.RIGHT).setMarginRight(25)).setBackgroundColor(lightBlue));
+        totale.addCell(new Cell().add(new Paragraph("Totale: € "+(bean.getPrezzo_totale()+5)).setBold().setFontSize(16).setTextAlignment(TextAlignment.RIGHT).setMarginRight(25)).setBackgroundColor(lightBlue));
         document.add(totale);
         //note
         Table note = new Table(fullWidth);

@@ -103,7 +103,7 @@
 				
 		
 				
-				<form action ="Logout_servlet" method="get">
+				<form action ="Logout_servlet" method="get" >
 					<input type="submit" class="Modifica2" value="Logout">
 				</form>	
 													
@@ -127,7 +127,7 @@
 				<h2><strong>Indirizzi di spedizione</strong></h2>
 				<form id="met_pag" method="post" action="Salva_ind_consegna">
 					<input class="campi" type="text" placeholder="Via" id="via" name="via">
-					<input class="campi" type="text" placeholder="Numero civico" id="number" name="number">
+					<input class="campi" type="text" placeholder="Numero civico" id="number" name="number" maxlength="6">
 					<input class="campi" type="text" placeholder="CAP" id="cap" name="cap" maxlength="5">
 					<input class="campi" type="text" placeholder="Citta" id="provincia" name="citta">
 					<br>
@@ -135,6 +135,13 @@
 				</form>
 			</div>	    
 		</div>
+		
+			<div class="error_box">
+				<p class="error_message_cvv" style="display:none;"></p>
+				<p class="error_message_carta" style="display:none;"></p>
+			</div>
+			
+			
 		
 		<div class="ciclo">
 			<p>I tuoi dati di pagamento</p>
@@ -211,5 +218,52 @@
 	
 		<br><br>
 		<jsp:include page="footer.jsp" />
+		
+		
+		<script>
+			//controllo sul codice carta
+			$("#cod_carta").focusout(function(){
+				if ($.isNumeric(this.value)){
+					$(".error_message_carta").css("display","none");
+				}else{
+					$(".error_message_carta").html("Il formato del codice carta da te inserito non è valido");
+					$(".error_message_carta").css("display","flex");
+					$(".error_message_carta").css("color", "red");
+				}	
+			})
+			
+			//controllo sul cvv
+			$("#cod_cvv").focusout(function(){
+				if ($.isNumeric(this.value)){
+					$(".error_message_cvv").css("display","none");
+				}else{
+					$(".error_message_cvv").html("Il formato del codice CVV da te inserito non è valido");
+					$(".error_message_cvv").css("display","flex");
+					$(".error_message_cvv").css("color", "red");
+				}	
+			})
+			
+			//controllo sul numero civico
+			$("#number").focusout(function(){
+				if ($.isNumeric(this.value)){
+					$(".error_message_cvv").css("display","none");
+				}else{
+					$(".error_message_cvv").html("Il formato del numero civico da te inserito non è valido");
+					$(".error_message_cvv").css("display","flex");
+					$(".error_message_cvv").css("color", "red");
+				}	
+			})
+			
+			//controllo sul CAP
+			$("#cap").focusout(function(){
+				if ($.isNumeric(this.value)){
+					$(".error_message_carta").css("display","none");
+				}else{
+					$(".error_message_carta").html("Il formato del codice CAP da te inserito non è valido");
+					$(".error_message_carta").css("display","flex");
+					$(".error_message_carta").css("color", "red");
+				}	
+			})
+		</script>
 	</body>
 </html>

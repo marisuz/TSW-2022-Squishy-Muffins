@@ -15,6 +15,8 @@ public class OrdineBean {
 	HashMap<ProdottoBean, ArrayList<Double>> composizione = new HashMap<>();  // Posizione 0 ci mettiamo quantità, Posizione 1 ci mettiamo Iva, Posizione 2 ci mettiamo Prezzo
 	Double Prezzo_totale;
 	
+	//come gestiamo l'iva: insieme al prodotto salvato, salviamo anche la quantità, l'iva ed il prezzo al momento dell'acquisto
+	
 	
 	public Double getPrezzo_totale() {
 		return Prezzo_totale;
