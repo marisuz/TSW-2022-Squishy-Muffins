@@ -96,7 +96,7 @@
 											<p><strong>Codice Carta:</strong> <%=  pbean.getCodice_carta() %></p>
 										</div>
 								<%}}%>
-									</div>
+						</div>
 									
 									
 								<div class="metodi">
@@ -121,8 +121,19 @@
 						<%}%> 
 						
 		<div class="jammja">
-			
-			<input type="submit" value="Completa ordine" class="acquista">
+			<% if (u.getConsegna().isEmpty() || u.getPagamento().isEmpty()){ %>
+					<input type="submit" value="Completa ordine" class="acquista" disabled>
+	
+				<% } else { %>
+					<input type="submit" value="Completa ordine" class="acquista">
+					
+				<% } %>
+		 
+		 
+		 
+		 
+		 
+<!-- 		 			<input type="submit" value="Completa ordine" class="acquista"> -->
 			
 		</div> 			
 			</form>
