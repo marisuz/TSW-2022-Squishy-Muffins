@@ -114,24 +114,24 @@
 			<div class="met">
 				<h2><strong>Metodi di pagamento</strong></h2>
 				<form id="met_pag" method="post" action="Salva_carta_pagamento">
-					<input class="campi" type="text" placeholder="Intestatario" id="intestatario" name="intestatario">
-					<input class="campi" type="text" placeholder="Codice carta" id="cod_carta" name="cod_carta" maxlength="12">
-					<input class="campi" type="text" placeholder="CVV" id="cod_cvv" name="cod_cvv" maxlength="3">
-					<input class="campi" type="month" placeholder="Mese scadenza" id="month" name="month">
+					<input class="campi" type="text" placeholder="Intestatario" id="intestatario" name="intestatario" >
+					<input class="campi" type="text" placeholder="Codice carta" id="cod_carta" name="cod_carta" maxlength="12" >
+					<input class="campi" type="text" placeholder="CVV" id="cod_cvv" name="cod_cvv" maxlength="3"  >
+					<input class="campi" type="month" placeholder="Mese scadenza" id="month" name="month" >
 					<br>
-					<button class="save">Salva nuovo metodo di pagamento</button>
+					<button type="submit" id="pay" class="save">Salva nuovo metodo di pagamento</button>
 				</form>
 			</div>
 
 			<div class="met">
 				<h2><strong>Indirizzi di spedizione</strong></h2>
-				<form id="met_pag" method="post" action="Salva_ind_consegna">
-					<input class="campi" type="text" placeholder="Via" id="via" name="via">
-					<input class="campi" type="text" placeholder="Numero civico" id="number" name="number" maxlength="6">
-					<input class="campi" type="text" placeholder="CAP" id="cap" name="cap" maxlength="5">
-					<input class="campi" type="text" placeholder="Citta" id="provincia" name="citta">
+				<form id="met_send" method="post" action="Salva_ind_consegna">
+					<input class="campi" type="text" placeholder="Via" id="via" name="via" >
+					<input class="campi" type="text" placeholder="Numero civico" id="number" name="number" maxlength="6" >
+					<input class="campi" type="text" placeholder="CAP" id="cap" name="cap" maxlength="5" >
+					<input class="campi" type="text" placeholder="Citta" id="provincia" name="citta" >
 					<br>
-					<button class="save">Salva nuovo indirizzo di spedizione</button>
+					<button type="submit" id="address" class="save">Salva nuovo indirizzo di spedizione</button>
 				</form>
 			</div>	    
 		</div>
@@ -139,10 +139,10 @@
 			<div class="error_box">
 				<p class="error_message_cvv" style="display:none;"></p>
 				<p class="error_message_carta" style="display:none;"></p>
+				<p class="error_message_via" style="display:none;"></p>
+				<p class="error_message_prov" style="display:none;"></p>
 			</div>
-			
-			
-		
+
 		<div class="ciclo">
 			<p>I tuoi dati di pagamento</p>
 		</div>
@@ -220,50 +220,62 @@
 		<jsp:include page="footer.jsp" />
 		
 		
-		<script>
-			//controllo sul codice carta
-			$("#cod_carta").focusout(function(){
-				if ($.isNumeric(this.value)){
-					$(".error_message_carta").css("display","none");
-				}else{
-					$(".error_message_carta").html("Il formato del codice carta da te inserito non è valido");
-					$(".error_message_carta").css("display","flex");
-					$(".error_message_carta").css("color", "red");
-				}	
-			})
-			
-			//controllo sul cvv
-			$("#cod_cvv").focusout(function(){
-				if ($.isNumeric(this.value)){
-					$(".error_message_cvv").css("display","none");
-				}else{
-					$(".error_message_cvv").html("Il formato del codice CVV da te inserito non è valido");
-					$(".error_message_cvv").css("display","flex");
-					$(".error_message_cvv").css("color", "red");
-				}	
-			})
-			
-			//controllo sul numero civico
-			$("#number").focusout(function(){
-				if ($.isNumeric(this.value)){
-					$(".error_message_cvv").css("display","none");
-				}else{
-					$(".error_message_cvv").html("Il formato del numero civico da te inserito non è valido");
-					$(".error_message_cvv").css("display","flex");
-					$(".error_message_cvv").css("color", "red");
-				}	
-			})
-			
-			//controllo sul CAP
-			$("#cap").focusout(function(){
-				if ($.isNumeric(this.value)){
-					$(".error_message_carta").css("display","none");
-				}else{
-					$(".error_message_carta").html("Il formato del codice CAP da te inserito non è valido");
-					$(".error_message_carta").css("display","flex");
-					$(".error_message_carta").css("color", "red");
-				}	
-			})
+		<script> //SCRIPT SUI CONTROLLI
+ 			
+			$("#pay").click(function(e){
+				e.preventDefault();
+				var flag = true; 
+				//controllo sul codice carta
+					if ($.isNumeric($("#cod_carta").val())){
+						$(".error_message_carta").css("display","none");
+					}else{
+						$(".error_message_carta").html("Il formato del codice carta da te inserito non è valido");
+						$(".error_message_carta").css("display","flex");
+						$(".error_message_carta").css("color", "red");
+					 	flag = false; 
+					}	
+				//controllo sul cvv
+					if ($.isNumeric($("#cod_cvv").val())){
+						$(".error_message_cvv").css("display","none");
+					}else{
+						$(".error_message_cvv").html("Il formato del codice CVV da te inserito non è valido");
+						$(".error_message_cvv").css("display","flex");
+						$(".error_message_cvv").css("color", "red");
+					 	flag = false; 
+					}	
+ 				if (flag == true){
+					$("#met_pag").submit();
+				} 
+			}) 
+		
+		
+
+ 			$("#address").click(function(e){
+				e.preventDefault();
+				var flag = true;
+				//controllo sul numero civico
+					if ($.isNumeric($("#number").val())){
+						$(".error_message_cvv").css("display","none");
+					}else{
+						$(".error_message_cvv").html("Il formato del numero civico da te inserito non è valido");
+						$(".error_message_cvv").css("display","flex");
+						$(".error_message_cvv").css("color", "red");
+						flag = false;
+					}		
+				//controllo sul CAP
+					if ($.isNumeric($("#cap").val())){
+						$(".error_message_carta").css("display","none");
+					}else{
+						$(".error_message_carta").html("Il formato del codice CAP da te inserito non è valido");
+						$(".error_message_carta").css("display","flex");
+						$(".error_message_carta").css("color", "red");
+						flag = false;
+					}	
+				if (flag == true){
+					$("#met_send").submit();
+				}
+			}) 
 		</script>
+		
 	</body>
 </html>

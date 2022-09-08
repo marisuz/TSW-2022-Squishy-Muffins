@@ -68,6 +68,10 @@ form#met_pag{
 	padding:10px;
 }
 
+form#met_send{
+	padding:10px;
+}
+
 div#prova {
     margin: 0;
 }
