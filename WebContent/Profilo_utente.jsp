@@ -242,6 +242,24 @@
 						$(".error_message_cvv").css("display","flex");
 						$(".error_message_cvv").css("color", "red");
 					 	flag = false; 
+					}
+					//controllo sull'intestatario
+					if ($("#intestatario").val() != ""){
+						$(".error_message_via").css("display","none");
+					}else{
+						$(".error_message_via").html("Il formato dell'intestatario da te inserito non è valido");
+						$(".error_message_via").css("display","flex");
+						$(".error_message_via").css("color", "red");
+					 	flag = false; 
+					}
+					//controllo sul mese
+					if ($("#month").val() != ""){
+						$(".error_message_prov").css("display","none");
+					}else{
+						$(".error_message_prov").html("Il formato della data da te inserito non è valido");
+						$(".error_message_prov").css("display","flex");
+						$(".error_message_prov").css("color", "red");
+					 	flag = false; 
 					}	
  				if (flag == true){
 					$("#met_pag").submit();
@@ -270,7 +288,25 @@
 						$(".error_message_carta").css("display","flex");
 						$(".error_message_carta").css("color", "red");
 						flag = false;
-					}	
+					}
+					//controllo sulla VIA
+					if ($("#via").val() != ""){
+						$(".error_message_via").css("display","none");
+					}else{
+						$(".error_message_via").html("Il formato della via da te inserito non è valido");
+						$(".error_message_via").css("display","flex");
+						$(".error_message_via").css("color", "red");
+					 	flag = false; 
+					}
+					//controllo sulla PROVINCIA
+					if ($("#provincia").val() != ""){
+						$(".error_message_prov").css("display","none");
+					}else{
+						$(".error_message_prov").html("Il formato della provincia da te inserito non è valido");
+						$(".error_message_prov").css("display","flex");
+						$(".error_message_prov").css("color", "red");
+					 	flag = false; 
+					}
 				if (flag == true){
 					$("#met_send").submit();
 				}
