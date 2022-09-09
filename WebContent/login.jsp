@@ -63,8 +63,8 @@
 		        	  type: "POST",
 		              url:"LoginServlet",
 		              data : {
-			    			username : $("#username").val(), 
-			    			password : $("#password").val()
+			    	  username : $("#username").val(), 
+			    	  password : $("#password").val()
 			    		},
 		              cache: false,
 		              success: function (data){

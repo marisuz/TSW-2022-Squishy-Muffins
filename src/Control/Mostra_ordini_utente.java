@@ -44,7 +44,6 @@ public class Mostra_ordini_utente extends HttpServlet {
 			try {
 				ubean = (UtenteBean)request.getSession().getAttribute("Utente loggato");
 				var = (ArrayList<OrdineBean>) odao.doRetrieveAllByUtente(ubean.getEmail());
-				System.out.println(var);
 				request.setAttribute("ordini", var);
 				RequestDispatcher rs = request.getRequestDispatcher("Profilo_utente.jsp");
 				rs.include(request, response);

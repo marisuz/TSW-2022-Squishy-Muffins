@@ -50,14 +50,11 @@ public class LoginServlet extends HttpServlet {
 		UtenteDAO users = new UtenteDAO();
 		UtenteBean variabile = new UtenteBean();
 		
-		System.out.println(password + "ciao");
-		
 		try {
 			variabile = users.doRetrieveByKey(username);
 			if (variabile == null) {
 				String risposta = "Email no DB";
 				response.getWriter().print(gson.toJson(risposta, String.class));
-				System.out.println(risposta);
 				response.getWriter().flush();
 				response.setStatus(200);
 				return;
@@ -70,7 +67,6 @@ public class LoginServlet extends HttpServlet {
 			} else {
 				String risposta = "email e psw si";
 				response.getWriter().print(gson.toJson(risposta, String.class));
-				System.out.println(risposta);
 				response.getWriter().flush();
 				response.setStatus(200);
 				return;

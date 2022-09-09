@@ -42,7 +42,6 @@ public class Mostra_ordini extends HttpServlet {
 		if(action.equals("mostra")) {
 			try {
 				var = (ArrayList<OrdineBean>) odao.doRetrieveAll(null);
-				System.out.println(var);
 				request.setAttribute("ordini", var);
 				RequestDispatcher rs = request.getRequestDispatcher("profilo_admin.jsp");
 				rs.include(request, response);
@@ -55,7 +54,6 @@ public class Mostra_ordini extends HttpServlet {
 			
 			try {
 				var = (ArrayList<OrdineBean>) odao.doRetrieveAll("data_ordine");
-				System.out.println(var);
 				request.setAttribute("ordini", var);
 				RequestDispatcher rs = request.getRequestDispatcher("profilo_admin.jsp");
 				rs.include(request, response);
@@ -69,7 +67,6 @@ public class Mostra_ordini extends HttpServlet {
 			
 			try {
 				var = (ArrayList<OrdineBean>) odao.doRetrieveAll("cod_utente");
-				System.out.println(var);
 				request.setAttribute("ordini", var);
 				RequestDispatcher rs = request.getRequestDispatcher("profilo_admin.jsp");
 				rs.include(request, response);
